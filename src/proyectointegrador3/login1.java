@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package proyectointegrador3;
-import proyectointegrador3.Escritorio;
+//import proyectointegrador3.Escritorio;
 
 /**
  *
@@ -202,7 +202,7 @@ public class login1 extends javax.swing.JInternalFrame {
         f.setVisible(true);
         f.pack();
         f.show();
-        Escritorio.principal.add(f);
+   //     Escritorio.principal.add(f);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
