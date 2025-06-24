@@ -58,11 +58,11 @@ public class login1 extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(10, 54, 86));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user-circle.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user-circle-claro.png"))); // NOI18N
 
         jLabel1.setBackground(new java.awt.Color(10, 54, 86));
         jLabel1.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 204));
+        jLabel1.setForeground(new java.awt.Color(220, 225, 235));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("I n i c i a r   S e s i ó n");
 
@@ -85,7 +85,7 @@ public class login1 extends javax.swing.JInternalFrame {
 
         jButton1.setBackground(new java.awt.Color(19, 25, 54));
         jButton1.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 204));
+        jButton1.setForeground(new java.awt.Color(220, 225, 235));
         jButton1.setText("Iniciar sesión");
         jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -96,12 +96,12 @@ public class login1 extends javax.swing.JInternalFrame {
 
         jLabel4.setBackground(new java.awt.Color(102, 102, 102));
         jLabel4.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 204));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("¿No tienes cuenta?");
 
         jButton2.setBackground(new java.awt.Color(19, 25, 54));
         jButton2.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 204));
+        jButton2.setForeground(new java.awt.Color(220, 225, 235));
         jButton2.setText("Registrarse");
         jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +110,7 @@ public class login1 extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 204));
+        jButton3.setBackground(new java.awt.Color(220, 225, 235));
         jButton3.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         jButton3.setForeground(new java.awt.Color(19, 25, 54));
         jButton3.setText("Administrador");
