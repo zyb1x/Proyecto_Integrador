@@ -4,10 +4,7 @@
  */
 package Clases;
 
-/**
- *
- * @author Pablo
- */
+
 public class Producto {
     
 }

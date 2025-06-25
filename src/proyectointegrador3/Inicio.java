@@ -4,6 +4,8 @@
  */
 package proyectointegrador3;
 
+import BaseDatos.connection;
+
 /**
  *
  * @author dluis
@@ -226,6 +228,9 @@ public class Inicio extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Inicio().setVisible(true);
+                connection miConexion = new connection();
+                
+                miConexion.getConexion();
             }
         });
     }
