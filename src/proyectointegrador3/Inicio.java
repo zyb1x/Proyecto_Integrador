@@ -45,15 +45,15 @@ public class Inicio extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(3, 68, 96));
         jButton2.setFont(new java.awt.Font("Georgia", 1, 10)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 204));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user-check (1).png"))); // NOI18N
+        jButton2.setForeground(new java.awt.Color(220, 225, 235));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user-check_gray.png"))); // NOI18N
         jButton2.setText("Iniciar Sesión");
         jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jButton7.setBackground(new java.awt.Color(3, 68, 96));
         jButton7.setFont(new java.awt.Font("Georgia", 1, 10)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(255, 255, 204));
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user-plus.png"))); // NOI18N
+        jButton7.setForeground(new java.awt.Color(220, 225, 235));
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user-plus-gray.png"))); // NOI18N
         jButton7.setText("Registrarse");
         jButton7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -64,8 +64,8 @@ public class Inicio extends javax.swing.JFrame {
 
         jButton8.setBackground(new java.awt.Color(3, 68, 96));
         jButton8.setFont(new java.awt.Font("Georgia", 1, 10)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(255, 255, 204));
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/registered.png"))); // NOI18N
+        jButton8.setForeground(new java.awt.Color(220, 225, 235));
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/registered-gray.png"))); // NOI18N
         jButton8.setText("Registrar \nproducto");
         jButton8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -76,8 +76,8 @@ public class Inicio extends javax.swing.JFrame {
 
         jButton9.setBackground(new java.awt.Color(3, 68, 96));
         jButton9.setFont(new java.awt.Font("Georgia", 1, 10)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(255, 255, 204));
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dollar-circle.png"))); // NOI18N
+        jButton9.setForeground(new java.awt.Color(220, 225, 235));
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dollar-circle-gray.png"))); // NOI18N
         jButton9.setText("Ventas");
         jButton9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -102,7 +102,7 @@ public class Inicio extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(206, Short.MAX_VALUE)
+                .addContainerGap(139, Short.MAX_VALUE)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -110,15 +110,15 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addContainerGap(273, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(19, 25, 54));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 204));
         jLabel2.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 204));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home-alt-2.png"))); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(189, 194, 199));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home-alt-claro.png"))); // NOI18N
         jLabel2.setText("   I  n  i  c  i  o");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -140,7 +140,7 @@ public class Inicio extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(10, 54, 86));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LogoPlasticos1.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logoEpresaPlas.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -165,7 +165,7 @@ public class Inicio extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(2, 2, 2)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -173,7 +173,7 @@ public class Inicio extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
