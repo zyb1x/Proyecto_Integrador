@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package proyectointegrador3;
+import BaseDatos.connection;
 
 /**
  *
@@ -226,6 +227,10 @@ public class App extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new App().setVisible(true);
+                
+                connection miConexion = new connection();
+                
+                miConexion.getConexion();
             }
         });
     }
