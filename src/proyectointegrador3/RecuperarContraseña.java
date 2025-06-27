@@ -167,7 +167,7 @@ public class RecuperarContraseña extends javax.swing.JInternalFrame {
         });
 
         jLabel6.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel6.setText("Email");
+        jLabel6.setText("Correo electronico:");
 
         jButton3.setBackground(new java.awt.Color(11, 54, 120));
         jButton3.setForeground(new java.awt.Color(204, 204, 204));
