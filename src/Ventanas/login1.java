@@ -1,14 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
+
 package Ventanas;
 //vimport proyectointegrador3.App;
 
-/**
- *
- * @author LENOVO
- */
 public class login1 extends javax.swing.JInternalFrame {
 
     /**
@@ -383,7 +376,7 @@ public class login1 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        funciones f = new funciones();
+        Operaciones f = new Operaciones();
         f.setVisible(true);
         f.pack();
         f.show();
