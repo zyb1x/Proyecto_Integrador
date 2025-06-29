@@ -1,10 +1,6 @@
 
 package proyectointegrador3;
 
-/**
- *
- * @author LENOVO
- */
 public class Main {
 
    
