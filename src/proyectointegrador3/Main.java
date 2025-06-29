@@ -5,7 +5,7 @@ package proyectointegrador3;
  *
  * @author LENOVO
  */
-public class ProyectoIntegrador3 {
+public class Main {
 
    
     public static void main(String[] args) {
