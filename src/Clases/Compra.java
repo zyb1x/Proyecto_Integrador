@@ -10,7 +10,7 @@ public class Compra extends Transaccion {
     }
 
     public Compra(int idCompra, int id, String fecha) {
-        super(id, fecha); //atributos heredados de clase padre
+        super(id, fecha); //llama al constructor de clase padre
         this.idCompra = idCompra;
     }
 

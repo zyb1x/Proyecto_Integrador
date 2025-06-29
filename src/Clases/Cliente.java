@@ -15,8 +15,9 @@ public class Cliente extends Persona {
     }
 
     //constructor con parametros
-
-    public Cliente(String correo, String telefono, String curp, String rfc, String folio, String nombre, String materno, String paterno, String direccion) {
+    public Cliente(String correo, String telefono, String curp, String rfc, String folio, String nombre,
+            String materno, String paterno, String direccion) {
+        
         super(nombre, materno, paterno, direccion);
         this.correo = correo;
         this.telefono = telefono;
