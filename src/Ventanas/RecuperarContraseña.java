@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-package proyectointegrador3;
+package Ventanas;
 
 /**
  *
@@ -50,7 +50,6 @@ public class RecuperarContraseña extends javax.swing.JInternalFrame {
         jLabel2.setBackground(new java.awt.Color(255, 255, 204));
         jLabel2.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(189, 194, 199));
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Pablo\\Downloads\\car-key.png")); // NOI18N
         jLabel2.setText("R E C U P E R A R   C O N T R A S E Ñ A");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -146,8 +145,6 @@ public class RecuperarContraseña extends javax.swing.JInternalFrame {
 
         jPanel6.setBackground(new java.awt.Color(11, 54, 110));
         jPanel6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Pablo\\Downloads\\mail-open (1).png")); // NOI18N
 
         jTextField1.setForeground(new java.awt.Color(204, 204, 204));
         jTextField1.setText("123@gmail.com");

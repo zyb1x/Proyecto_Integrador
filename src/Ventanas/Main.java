@@ -1,5 +1,5 @@
 
-package proyectointegrador3;
+package Ventanas;
 
 public class Main {
 
