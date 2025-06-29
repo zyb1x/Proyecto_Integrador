@@ -5,19 +5,18 @@ public class Empleado extends Persona{
     private int numDpto;
     private int idEmpleado;
     private String turno;
-    private String direccion;
 
     public Empleado(){
         super();
     }
+    
+    //constructor con parametros
 
-    public Empleado(int numDpto, String nombre, String materno, String paterno, int idEmpleado, String turno, String direccion){
-       
-        super(nombre, materno, paterno);
+    public Empleado(int numDpto, int idEmpleado, String turno, String nombre, String materno, String paterno, String direccion) {
+        super(nombre, materno, paterno, direccion);
         this.numDpto = numDpto;
         this.idEmpleado = idEmpleado;
         this.turno = turno;
-        this.direccion = direccion;
     }
 
     public int getNumDpto() {
@@ -44,15 +43,7 @@ public class Empleado extends Persona{
         this.turno = turno;
     }
 
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-    
-    
     
 }    
+
 

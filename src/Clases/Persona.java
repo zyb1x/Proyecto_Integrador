@@ -3,16 +3,18 @@ package Clases;
 
 public class Persona {
    
-    private String nombre, materno, paterno;
+    private String nombre, materno, paterno, direccion;
 
     public Persona(){
 
     }
     
-    public Persona(String nombre, String materno, String paterno){
+    //constructor con parametros
+    public Persona(String nombre, String materno, String paterno, String direccion) {
         this.nombre = nombre;
         this.materno = materno;
         this.paterno = paterno;
+        this.direccion = direccion;
     }
 
     public String getNombre() {
@@ -39,6 +41,16 @@ public class Persona {
         this.paterno = paterno;
     }
 
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+    
+    
+   
     
     
 }

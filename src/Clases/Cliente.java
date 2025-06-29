@@ -2,26 +2,28 @@
 package Clases;
 
 public class Cliente extends Persona {
-private String correo;
-private String direccion;
-private String telefono;
-private String curp;
-private String rfc;
-private String folio; 
+    
+    private String correo;
+    private String telefono;
+    private String curp;
+    private String rfc;
+    private String folio; 
+    
+  //constructor vacio
+    public Cliente() {
+        super();
+    }
 
-public Cliente() {
-    super();
-}
+    //constructor con parametros
 
-public Cliente(String correo, String direccion, String telefono, String curp, String materno, String paterno, String nombre, String rfc, String folio){
-    super(nombre, materno, paterno);
-    this.correo = correo;
-    this.direccion = direccion;
-    this.telefono = telefono;
-    this.curp = curp;
-    this.rfc = rfc;
-    this.folio = folio;
-  }    
+    public Cliente(String correo, String telefono, String curp, String rfc, String folio, String nombre, String materno, String paterno, String direccion) {
+        super(nombre, materno, paterno, direccion);
+        this.correo = correo;
+        this.telefono = telefono;
+        this.curp = curp;
+        this.rfc = rfc;
+        this.folio = folio;
+    }
 
     public String getCorreo() {
         return correo;
@@ -29,14 +31,6 @@ public Cliente(String correo, String direccion, String telefono, String curp, St
 
     public void setCorreo(String correo) {
         this.correo = correo;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
     }
 
     public String getTelefono() {
@@ -70,6 +64,15 @@ public Cliente(String correo, String direccion, String telefono, String curp, St
     public void setFolio(String folio) {
         this.folio = folio;
     }
+    
+    
+
+
+    
+    
+
+
+    
 
     
 
