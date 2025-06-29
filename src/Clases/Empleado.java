@@ -1,7 +1,7 @@
 
 package Clases;
 
-public class Empleado extends Datos{
+public class Empleado extends Persona{
     private int numDpto;
     private int idEmpleado;
     private String turno;

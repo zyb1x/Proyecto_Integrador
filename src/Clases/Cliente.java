@@ -1,7 +1,7 @@
 
 package Clases;
 
-public class Cliente extends Datos {
+public class Cliente extends Persona {
 private String correo;
 private String direccion;
 private String telefono;

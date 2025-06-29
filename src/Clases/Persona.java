@@ -1,15 +1,15 @@
 
 package Clases;
 
-public class Datos {
+public class Persona {
    
     private String nombre, materno, paterno;
 
-    public Datos(){
+    public Persona(){
 
     }
     
-    public Datos(String nombre, String materno, String paterno){
+    public Persona(String nombre, String materno, String paterno){
         this.nombre = nombre;
         this.materno = materno;
         this.paterno = paterno;
