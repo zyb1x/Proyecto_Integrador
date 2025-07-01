@@ -221,7 +221,7 @@ public class Operaciones extends javax.swing.JInternalFrame {
         jPanel5.setBackground(new java.awt.Color(19, 25, 54));
 
         jLabel1.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(220, 225, 235));
         jLabel1.setText("R e g i s t r o  d e  v e n t a");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
