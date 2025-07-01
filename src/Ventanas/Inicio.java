@@ -186,12 +186,15 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-      /* Ventas v = new Ventas();
-       v.set */
-      /////}///
+      //Muestra la ventana de Operaciones
+        Operaciones v = new Operaciones();
+       v.setVisible(true);
+       v.show();
+       Inicio.panelPrincipal.add(v);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //Muestra la ventana de Inicio de sesion
         login L = new login();
         L.setVisible(true);
         L.show();
