@@ -396,6 +396,7 @@ public class login extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnRegistrarseActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
+        validar();
         Operaciones f = new Operaciones();
         f.setVisible(true);
         f.pack();
