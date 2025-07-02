@@ -1,6 +1,6 @@
 
 package Clases;
-
+//Datos en la base: idCompra, idProveedor, fecha, total
 
 public class Compra extends Transaccion {
     private int idCompra;

@@ -1,6 +1,9 @@
 
 package Clases;
 
+//Datos en la base
+//idCliente es AUTO_INCREMENT, rfc, nombre, apellidoP, apellidoM, telefono, correoElec
+
 public class Cliente extends Persona {
     
     private String correo;

@@ -1,6 +1,9 @@
 
 package Clases;
 
+//Datos de detalle de compra en la base
+//idDetalle AUTO_INCREMENT,cantidad, precioCompra,subtotal
+
 public class DetalleVenta extends Detalles {
     private int idProducts;
     

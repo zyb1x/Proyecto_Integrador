@@ -1,6 +1,12 @@
 
 package Clases;
 
+//Datos en la base 
+// idAlmacen
+//fechaEntrada
+//fechaSalida
+//cantidad
+
 
 public class Almacen {
     private int idAlmacen;

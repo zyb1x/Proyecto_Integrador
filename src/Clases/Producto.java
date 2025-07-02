@@ -1,5 +1,8 @@
 
 package Clases;
+//Datos en base
+//idProductos, idCategoria, nombre
+//precio, stock, tammannio
 
 public class Producto {
     private String nombre;

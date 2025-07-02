@@ -1,18 +1,13 @@
 
 package Clases;
 
-public class Empleado extends Persona{
+public class Empleado{
     private int idEmpleado;
     private String Dpto;
     private String turno;
     private String telefono;
     private String correo;
     private String contrasenia;
-    
-
-    public Empleado(String Nombre, String Usuario, String Contrasenia, String ConfContrasenia){
-        super();
-    }
     
     //constructor con parametros
 

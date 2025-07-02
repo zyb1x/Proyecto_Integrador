@@ -10,4 +10,15 @@ package Clases;
  */
 public class Factura {
     
+    private int idVenta;
+    private int idCliente;//AUTO_INCREMENT
+    private int idEmpleado;
+    private String fecha;//date
+    
+    public void Factura(int idVenta, int idCliente, int idEmpleado, String fecha){
+        this.idVenta = idVenta;
+        this.idCliente = idCliente;
+        this.idEmpleado = idEmpleado;
+        this.fecha = fecha;
+    }
 }

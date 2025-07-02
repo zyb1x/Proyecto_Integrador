@@ -1,5 +1,7 @@
 
 package Clases;
+//Datos en Base
+//idProveedor, nombre, telefono, direccion
 
 public class Proveedor {
     private String fecha;
