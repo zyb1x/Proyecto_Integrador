@@ -2,25 +2,10 @@
 package Ventanas;
 //vimport proyectointegrador3.App;
 
-import javax.swing.JOptionPane;
 
 
 public class login extends javax.swing.JInternalFrame {
 
-    public void validar(){
-    
-    boolean acceso = false;
-    for (int i = 0; i < Registro.Datos.size(); i++) {
-    if (txtUsr.getText().equals(Registro.Datos.get(i).getUsuario()) && 
-        psw.getText().equals(Registro.Datos.get(i).getContrasenia())) {
-        
-        JOptionPane.showMessageDialog(this, "Bienvenido! " + Registro.Datos.get(i).getUsuario());
-        
-        
-        
-        acceso = true;
-        break;
-    }}}
     
     public login() {
         initComponents();
@@ -92,7 +77,7 @@ public class login extends javax.swing.JInternalFrame {
         txtUsr.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         txtUsr.setForeground(new java.awt.Color(153, 153, 153));
         txtUsr.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtUsr.setText("U S U A R I O");
+        txtUsr.setText("Correo");
         txtUsr.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 204), new java.awt.Color(102, 102, 102)));
         txtUsr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -320,12 +305,12 @@ public class login extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(270, 270, 270)
                         .addComponent(btnAdministrador)))
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addContainerGap(215, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 331, Short.MAX_VALUE)
                     .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 331, Short.MAX_VALUE)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,7 +347,9 @@ public class login extends javax.swing.JInternalFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -396,7 +383,6 @@ public class login extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnRegistrarseActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        validar();
         Operaciones f = new Operaciones();
         f.setVisible(true);
         f.pack();

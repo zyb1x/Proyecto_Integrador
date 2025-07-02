@@ -2,10 +2,11 @@
 package Clases;
 
 public class Empleado extends Persona{
-    private int numDpto;
     private int idEmpleado;
+    private String Dpto;
     private String turno;
-    private String usuario;
+    private String telefono;
+    private String correo;
     private String contrasenia;
     
 
@@ -15,21 +16,22 @@ public class Empleado extends Persona{
     
     //constructor con parametros
 
-    public Empleado(int numDpto, int idEmpleado, String turno, String usuario, String contrasenia, String nombre, String materno, String paterno, String direccion) {
-        super(nombre, materno, paterno, direccion);
-        this.numDpto = numDpto;
+    public Empleado(int idEmpleado, String Dpto, String turno, String telefono, String correo, String contrasenia) {
+        
+        this.Dpto = Dpto;
         this.idEmpleado = idEmpleado;
         this.turno = turno;
-        this.usuario = usuario;
+        this.telefono = telefono;
+        this.correo = correo;
         this.contrasenia = contrasenia;
     }
 
-    public int getNumDpto() {
-        return numDpto;
+    public String getDpto() {
+        return Dpto;
     }
 
-    public void setNumDpto(int numDpto) {
-        this.numDpto = numDpto;
+    public void setNumDpto(String Dpto) {
+        this.Dpto = Dpto;
     }
 
     public int getIdEmpleado() {
@@ -47,13 +49,20 @@ public class Empleado extends Persona{
     public void setTurno(String turno) {
         this.turno = turno;
     }
-
-    public String getUsuario() {
-        return usuario;
+    
+    public String getTelefono(){
+        return telefono;
     }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setTelefono(String telefono){
+        this.telefono = telefono;
+    }
+    
+    public String getCorreo(){
+        return correo;
+    }
+    
+    public void setCorreo(String correo){
+        this.correo = correo;
     }
 
     public String getContrasenia() {

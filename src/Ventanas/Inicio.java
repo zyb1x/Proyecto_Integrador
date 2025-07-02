@@ -6,6 +6,7 @@ import BaseDatos.connection;
 
 public class Inicio extends javax.swing.JFrame {
 
+    
 
     public Inicio() {
         initComponents();
@@ -18,10 +19,10 @@ public class Inicio extends javax.swing.JFrame {
 
         jButton5 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        iniciarSesion = new javax.swing.JButton();
+        registrarse = new javax.swing.JButton();
+        registroProductos = new javax.swing.JButton();
+        ventas = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         panelPrincipal = new javax.swing.JPanel();
@@ -33,51 +34,51 @@ public class Inicio extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(157, 178, 191));
 
-        jButton2.setBackground(new java.awt.Color(3, 68, 96));
-        jButton2.setFont(new java.awt.Font("Georgia", 1, 10)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(220, 225, 235));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user-check_gray.png"))); // NOI18N
-        jButton2.setText("Iniciar Sesión");
-        jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        iniciarSesion.setBackground(new java.awt.Color(3, 68, 96));
+        iniciarSesion.setFont(new java.awt.Font("Georgia", 1, 10)); // NOI18N
+        iniciarSesion.setForeground(new java.awt.Color(220, 225, 235));
+        iniciarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user-check_gray.png"))); // NOI18N
+        iniciarSesion.setText("Iniciar Sesión");
+        iniciarSesion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        iniciarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                iniciarSesionActionPerformed(evt);
             }
         });
 
-        jButton7.setBackground(new java.awt.Color(3, 68, 96));
-        jButton7.setFont(new java.awt.Font("Georgia", 1, 10)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(220, 225, 235));
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user-plus-gray.png"))); // NOI18N
-        jButton7.setText("Registrarse");
-        jButton7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        registrarse.setBackground(new java.awt.Color(3, 68, 96));
+        registrarse.setFont(new java.awt.Font("Georgia", 1, 10)); // NOI18N
+        registrarse.setForeground(new java.awt.Color(220, 225, 235));
+        registrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user-plus-gray.png"))); // NOI18N
+        registrarse.setText("Registrarse");
+        registrarse.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        registrarse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                registrarseActionPerformed(evt);
             }
         });
 
-        jButton8.setBackground(new java.awt.Color(3, 68, 96));
-        jButton8.setFont(new java.awt.Font("Georgia", 1, 10)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(220, 225, 235));
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/registered-gray.png"))); // NOI18N
-        jButton8.setText("Registrar \nproducto");
-        jButton8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        registroProductos.setBackground(new java.awt.Color(3, 68, 96));
+        registroProductos.setFont(new java.awt.Font("Georgia", 1, 10)); // NOI18N
+        registroProductos.setForeground(new java.awt.Color(220, 225, 235));
+        registroProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/registered-gray.png"))); // NOI18N
+        registroProductos.setText("Registrar \nproducto");
+        registroProductos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        registroProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                registroProductosActionPerformed(evt);
             }
         });
 
-        jButton9.setBackground(new java.awt.Color(3, 68, 96));
-        jButton9.setFont(new java.awt.Font("Georgia", 1, 10)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(220, 225, 235));
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dollar-circle-gray.png"))); // NOI18N
-        jButton9.setText("Ventas");
-        jButton9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        ventas.setBackground(new java.awt.Color(3, 68, 96));
+        ventas.setFont(new java.awt.Font("Georgia", 1, 10)); // NOI18N
+        ventas.setForeground(new java.awt.Color(220, 225, 235));
+        ventas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dollar-circle-gray.png"))); // NOI18N
+        ventas.setText("Ventas");
+        ventas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ventas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                ventasActionPerformed(evt);
             }
         });
 
@@ -88,23 +89,23 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(registroProductos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(registrarse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(iniciarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ventas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 19, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(139, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(iniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(registrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(registroProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ventas, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(273, Short.MAX_VALUE))
         );
 
@@ -123,7 +124,7 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(602, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,25 +135,11 @@ public class Inicio extends javax.swing.JFrame {
         );
 
         panelPrincipal.setBackground(new java.awt.Color(10, 54, 86));
+        panelPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logoEpresaPlas.png"))); // NOI18N
-
-        javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
-        panelPrincipal.setLayout(panelPrincipalLayout);
-        panelPrincipalLayout.setHorizontalGroup(
-            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap(50, Short.MAX_VALUE))
-        );
-        panelPrincipalLayout.setVerticalGroup(
-            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipalLayout.createSequentialGroup()
-                .addContainerGap(59, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(50, 50, 50))
-        );
+        jLabel1.setText("jLabel1");
+        panelPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 500, 350));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -177,29 +164,34 @@ public class Inicio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void registrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarseActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+        Registro r = new Registro();
+        r.setVisible(true);
+        r.pack();
+        r.show();
+        Inicio.panelPrincipal.add(r); 
+    }//GEN-LAST:event_registrarseActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void registroProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroProductosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_registroProductosActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void ventasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ventasActionPerformed
       //Muestra la ventana de Operaciones
         Operaciones v = new Operaciones();
        v.setVisible(true);
        v.show();
        Inicio.panelPrincipal.add(v);
-    }//GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_ventasActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void iniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarSesionActionPerformed
         //Muestra la ventana de Inicio de sesion
         login L = new login();
         L.setVisible(true);
         L.show();
         Inicio.panelPrincipal.add(L);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_iniciarSesionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,23 +225,20 @@ public class Inicio extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Inicio().setVisible(true);
-                connection miConexion = new connection();
-
-                miConexion.getConexion();
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton iniciarSesion;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     public static javax.swing.JPanel panelPrincipal;
+    private javax.swing.JButton registrarse;
+    private javax.swing.JButton registroProductos;
+    private javax.swing.JButton ventas;
     // End of variables declaration//GEN-END:variables
 }
