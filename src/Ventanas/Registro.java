@@ -20,6 +20,7 @@ public class Registro extends javax.swing.JInternalFrame {
  
     public static void insertarEmpleado(int idEmpleado, String departamento, 
             String turno, String telefono, String password, String correo){
+        
     String sql = "INSERT INTO EMPLEADO (idEmpleado, Dpto, turno, telefono, password, correo) "
             + "VALUES (?, ?, ?, ?, ?, ?)";
     
@@ -91,6 +92,8 @@ public class Registro extends javax.swing.JInternalFrame {
         turno = new javax.swing.JComboBox<>();
         departamento = new javax.swing.JTextField();
         correo = new javax.swing.JTextField();
+
+        setClosable(true);
 
         jPanel2.setBackground(new java.awt.Color(19, 25, 54));
 
@@ -299,11 +302,11 @@ public class Registro extends javax.swing.JInternalFrame {
         String password = contrasennia.getText();
         String confirmPwd = confContrasenia.getText();
         
-        Empleado e = new Empleado(IdEmpleado,Departamento, Turno,Telefono,Correo,password);
+        Empleado e = new Empleado(IdEmpleado,Departamento, Turno,Telefono,password,Correo);
         
         Datos.add(e);
         
-        insertarEmpleado(IdEmpleado, Departamento, Turno, Telefono, Correo, password);
+        insertarEmpleado(IdEmpleado, Departamento, Turno, Telefono, password, Correo);
         
         
         

@@ -2,10 +2,46 @@
 package Ventanas;
 //vimport proyectointegrador3.App;
 
+import BaseDatos.connection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
+
 
 
 public class login extends javax.swing.JInternalFrame {
 
+   public static boolean validarCredenciales( String password,String correo) {
+    String sql = "SELECT correo,password FROM EMPLEADO WHERE correo = ?";
+    
+    try (Connection con = connection.getConnection();
+         PreparedStatement pstmt = con.prepareStatement(sql)) {
+        
+        pstmt.setString(1, correo);  // Previene SQL Injection
+        
+        try (ResultSet rs = pstmt.executeQuery()) {
+            if (rs.next()) {
+                String storedPassword = rs.getString("password");
+                
+                // Comparación directa (texto plano)
+                if (password.equals(storedPassword)) {
+                    JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso");
+                    return true;
+                }
+            }
+            JOptionPane.showMessageDialog(null, "Correo o contraseña incorrectos");
+            return false;
+        }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos");
+        System.err.println("Error SQL: " + e.getMessage());
+        return false;
+    }
+}
     
     public login() {
         initComponents();
@@ -31,8 +67,8 @@ public class login extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        txtUsr = new javax.swing.JTextField();
-        psw = new javax.swing.JPasswordField();
+        email = new javax.swing.JTextField();
+        pwd = new javax.swing.JPasswordField();
         btnIniciar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         btnRegistrarse = new javax.swing.JButton();
@@ -61,8 +97,21 @@ public class login extends javax.swing.JInternalFrame {
 
         jScrollPane2.setViewportView(jEditorPane1);
 
+        setClosable(true);
+
         jPanel1.setBackground(new java.awt.Color(10, 54, 86));
         jPanel1.setForeground(new java.awt.Color(51, 51, 51));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 684, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 637, Short.MAX_VALUE)
+        );
 
         jPanel2.setBackground(new java.awt.Color(10, 54, 86));
 
@@ -74,25 +123,25 @@ public class login extends javax.swing.JInternalFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("I n i c i a r   S e s i ó n");
 
-        txtUsr.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        txtUsr.setForeground(new java.awt.Color(153, 153, 153));
-        txtUsr.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtUsr.setText("Correo");
-        txtUsr.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 204), new java.awt.Color(102, 102, 102)));
-        txtUsr.addActionListener(new java.awt.event.ActionListener() {
+        email.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        email.setForeground(new java.awt.Color(153, 153, 153));
+        email.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        email.setText("Correo");
+        email.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 204), new java.awt.Color(102, 102, 102)));
+        email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUsrActionPerformed(evt);
+                emailActionPerformed(evt);
             }
         });
 
-        psw.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        psw.setForeground(new java.awt.Color(153, 153, 153));
-        psw.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        psw.setText("C O N T R A S E Ñ A");
-        psw.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 204), new java.awt.Color(102, 102, 102)));
-        psw.addActionListener(new java.awt.event.ActionListener() {
+        pwd.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        pwd.setForeground(new java.awt.Color(153, 153, 153));
+        pwd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        pwd.setText("C O N T R A S E Ñ A");
+        pwd.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 204), new java.awt.Color(102, 102, 102)));
+        pwd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pswActionPerformed(evt);
+                pwdActionPerformed(evt);
             }
         });
 
@@ -289,10 +338,10 @@ public class login extends javax.swing.JInternalFrame {
                         .addGap(180, 180, 180)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUsr, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
-                            .addComponent(psw, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pwd, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(jLabel9)
@@ -320,9 +369,9 @@ public class login extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
-                .addComponent(txtUsr, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(psw, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pwd, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -343,27 +392,14 @@ public class login extends javax.swing.JInternalFrame {
                     .addGap(0, 301, Short.MAX_VALUE)))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -371,7 +407,9 @@ public class login extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -383,16 +421,21 @@ public class login extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnRegistrarseActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
+        String correoEm = email.getText();
+        String pass = pwd.getText();
+        validarCredenciales(correoEm,pass);  
+        
         Operaciones f = new Operaciones();
         f.setVisible(true);
         f.pack();
         f.show();
+        
    //    App.principal.add(f);
     }//GEN-LAST:event_btnIniciarActionPerformed
 
-    private void pswActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pswActionPerformed
+    private void pwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_pswActionPerformed
+    }//GEN-LAST:event_pwdActionPerformed
 
     private void btnAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministradorActionPerformed
         // TODO add your handling code here:
@@ -402,9 +445,9 @@ public class login extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRecuperarActionPerformed
 
-    private void txtUsrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsrActionPerformed
+    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtUsrActionPerformed
+    }//GEN-LAST:event_emailActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -412,6 +455,7 @@ public class login extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnIniciar;
     private javax.swing.JButton btnRecuperar;
     private javax.swing.JButton btnRegistrarse;
+    private javax.swing.JTextField email;
     private javax.swing.JButton jButton4;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JInternalFrame jInternalFrame1;
@@ -438,7 +482,6 @@ public class login extends javax.swing.JInternalFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JPasswordField psw;
-    private javax.swing.JTextField txtUsr;
+    private javax.swing.JPasswordField pwd;
     // End of variables declaration//GEN-END:variables
 }

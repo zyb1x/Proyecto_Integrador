@@ -26,7 +26,6 @@ public class Inicio extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         panelPrincipal = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
 
         jButton5.setText("jButton1");
 
@@ -137,10 +136,6 @@ public class Inicio extends javax.swing.JFrame {
         panelPrincipal.setBackground(new java.awt.Color(10, 54, 86));
         panelPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logoEpresaPlas.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        panelPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 500, 350));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -232,7 +227,6 @@ public class Inicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton iniciarSesion;
     private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
