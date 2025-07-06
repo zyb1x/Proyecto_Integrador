@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 
 
@@ -294,6 +295,19 @@ public class Registro extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if(idEmpleado.getText().isEmpty() || 
+       departamento.getText().isEmpty() || 
+       telefono.getText().isEmpty() || 
+       correo.getText().isEmpty() || 
+       contrasennia.getText().isEmpty() || 
+       confContrasenia.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+      if(!contrasennia.getText().equals(confContrasenia.getText())) {
+        JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }  
         int IdEmpleado = Integer.parseInt(idEmpleado.getText());
         String Departamento = departamento.getText();
         String Turno = turno.getSelectedItem().toString();
@@ -302,13 +316,13 @@ public class Registro extends javax.swing.JInternalFrame {
         String password = contrasennia.getText();
         String confirmPwd = confContrasenia.getText();
         
+        
+        
         Empleado e = new Empleado(IdEmpleado,Departamento, Turno,Telefono,password,Correo);
         
         Datos.add(e);
         
         insertarEmpleado(IdEmpleado, Departamento, Turno, Telefono, password, Correo);
-        
-        
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
