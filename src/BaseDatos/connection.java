@@ -19,10 +19,12 @@ public class connection {
     // Método para cerrar la conexión (opcional, útil si no usas try-with-resources)
     public static void closeConnection(Connection conn) {
         if (conn != null) {
+            System.out.println("Conexion exitosa");
             try {
                 conn.close();
             } catch (SQLException e) {
                 e.printStackTrace();
+                
             }
         }
     }

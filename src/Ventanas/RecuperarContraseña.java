@@ -93,11 +93,11 @@ public class RecuperarContraseña extends javax.swing.JInternalFrame {
 
         jLabel3.setBackground(new java.awt.Color(51, 51, 51));
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel3.setText("Por favor escriba su nombre de usuario o correo electronico. ");
+        jLabel3.setText("Por favor escriba su nombre de usuario o correo electrónico. ");
         jLabel3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         jLabel4.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel4.setText("Recibiras un enlace para crear la nueva contraseña ");
+        jLabel4.setText("Recibirá un enlace para crear la nueva contraseña ");
 
         jPanel5.setBackground(new java.awt.Color(10, 54, 150));
 
@@ -164,8 +164,6 @@ public class RecuperarContraseña extends javax.swing.JInternalFrame {
         jButton3.setForeground(new java.awt.Color(204, 204, 204));
         jButton3.setText("Olvidalo, la he recordado");
         jButton3.setBorder(null);
-
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Pablo\\Downloads\\google (1).png")); // NOI18N
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
