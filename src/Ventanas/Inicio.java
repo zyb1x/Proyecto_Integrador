@@ -36,9 +36,9 @@ public class Inicio extends javax.swing.JFrame {
         iniciarSesion.setBackground(new java.awt.Color(3, 68, 96));
         iniciarSesion.setFont(new java.awt.Font("Georgia", 1, 10)); // NOI18N
         iniciarSesion.setForeground(new java.awt.Color(220, 225, 235));
-        iniciarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user-check_gray.png"))); // NOI18N
         iniciarSesion.setText("Iniciar Sesión");
         iniciarSesion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        iniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         iniciarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 iniciarSesionActionPerformed(evt);
@@ -48,9 +48,9 @@ public class Inicio extends javax.swing.JFrame {
         registrarse.setBackground(new java.awt.Color(3, 68, 96));
         registrarse.setFont(new java.awt.Font("Georgia", 1, 10)); // NOI18N
         registrarse.setForeground(new java.awt.Color(220, 225, 235));
-        registrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user-plus-gray.png"))); // NOI18N
         registrarse.setText("Registrarse");
         registrarse.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        registrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         registrarse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registrarseActionPerformed(evt);
@@ -63,6 +63,7 @@ public class Inicio extends javax.swing.JFrame {
         registroProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/registered-gray.png"))); // NOI18N
         registroProductos.setText("Registrar \nproducto");
         registroProductos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        registroProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         registroProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registroProductosActionPerformed(evt);
@@ -75,6 +76,7 @@ public class Inicio extends javax.swing.JFrame {
         ventas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dollar-circle-gray.png"))); // NOI18N
         ventas.setText("Ventas");
         ventas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ventas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ventas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ventasActionPerformed(evt);
@@ -174,7 +176,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void ventasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ventasActionPerformed
       //Muestra la ventana de Operaciones
-        Operaciones v = new Operaciones();
+       Operaciones v = new Operaciones();
        v.setVisible(true);
        v.show();
        Inicio.panelPrincipal.add(v);

@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 
 public class login extends javax.swing.JInternalFrame {
 
-   public static boolean validarCredenciales( String password,String correo) {
+   public static boolean validarCredenciales( String correo,String password) {
     String sql = "SELECT correo,password FROM EMPLEADO WHERE correo = ?";
     
     try (Connection con = connection.getConnection();
@@ -88,6 +88,8 @@ public class login extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         btnRecuperar = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -126,8 +128,7 @@ public class login extends javax.swing.JInternalFrame {
         email.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         email.setForeground(new java.awt.Color(153, 153, 153));
         email.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        email.setText("Correo");
-        email.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 204), new java.awt.Color(102, 102, 102)));
+        email.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(19, 25, 54), null));
         email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailActionPerformed(evt);
@@ -137,8 +138,7 @@ public class login extends javax.swing.JInternalFrame {
         pwd.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         pwd.setForeground(new java.awt.Color(153, 153, 153));
         pwd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        pwd.setText("C O N T R A S E Ñ A");
-        pwd.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 204), new java.awt.Color(102, 102, 102)));
+        pwd.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(19, 25, 54), new java.awt.Color(102, 102, 102)));
         pwd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pwdActionPerformed(evt);
@@ -150,6 +150,7 @@ public class login extends javax.swing.JInternalFrame {
         btnIniciar.setForeground(new java.awt.Color(220, 225, 235));
         btnIniciar.setText("Iniciar sesión");
         btnIniciar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnIniciar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIniciarActionPerformed(evt);
@@ -166,6 +167,7 @@ public class login extends javax.swing.JInternalFrame {
         btnRegistrarse.setForeground(new java.awt.Color(220, 225, 235));
         btnRegistrarse.setText("Registrarse");
         btnRegistrarse.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarseActionPerformed(evt);
@@ -177,6 +179,7 @@ public class login extends javax.swing.JInternalFrame {
         btnAdministrador.setForeground(new java.awt.Color(19, 25, 54));
         btnAdministrador.setText("Administrador");
         btnAdministrador.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnAdministrador.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAdministrador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdministradorActionPerformed(evt);
@@ -322,25 +325,35 @@ public class login extends javax.swing.JInternalFrame {
         btnRecuperar.setForeground(new java.awt.Color(19, 25, 54));
         btnRecuperar.setText("Recuperar");
         btnRecuperar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnRecuperar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRecuperar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRecuperarActionPerformed(evt);
             }
         });
 
+        jLabel10.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(220, 225, 235));
+        jLabel10.setText("C O R R E O:");
+
+        jLabel11.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(220, 225, 235));
+        jLabel11.setText(" C O N T R A S E Ñ A:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(180, 180, 180)
+                .addGap(180, 180, 180)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel10)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)
                             .addComponent(pwd, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
@@ -350,10 +363,11 @@ public class login extends javax.swing.JInternalFrame {
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(jLabel4)
                                     .addGap(14, 14, 14)
-                                    .addComponent(btnRegistrarse)))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(270, 270, 270)
-                        .addComponent(btnAdministrador)))
+                                    .addComponent(btnRegistrarse)))
+                            .addComponent(jLabel11))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(86, 86, 86)
+                            .addComponent(btnAdministrador))))
                 .addContainerGap(215, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
@@ -368,9 +382,13 @@ public class login extends javax.swing.JInternalFrame {
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel10)
+                .addGap(3, 3, 3)
+                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pwd, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -384,7 +402,7 @@ public class login extends javax.swing.JInternalFrame {
                     .addComponent(btnRegistrarse))
                 .addGap(18, 18, 18)
                 .addComponent(btnAdministrador)
-                .addGap(44, 44, 44))
+                .addGap(33, 33, 33))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGap(0, 300, Short.MAX_VALUE)
@@ -410,7 +428,7 @@ public class login extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         pack();
@@ -421,16 +439,25 @@ public class login extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnRegistrarseActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        String correoEm = email.getText();
-        String pass = pwd.getText();
-        validarCredenciales(correoEm,pass);  
+        String correoEm = email.getText().trim();
+        String pass = new String(pwd.getPassword());
+        if (validarCredenciales(correoEm, pass)) {
+            Operaciones f = new Operaciones();
+            f.setVisible(true);
+            f.show();
+            Inicio.panelPrincipal.add(f);
+            this.dispose();  
+        }
+        /*String correoEm = email.getText().trim();
+        String pass     = new String(pwd.getPassword());
+        validarCredenciales(correoEm,pass);
         
         Operaciones f = new Operaciones();
         f.setVisible(true);
         f.pack();
         f.show();
-        
-   //    App.principal.add(f);
+        this.dispose();*/
+       
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     private void pwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwdActionPerformed
@@ -460,6 +487,8 @@ public class login extends javax.swing.JInternalFrame {
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
