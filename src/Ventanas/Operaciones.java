@@ -1,6 +1,7 @@
 
 package Ventanas;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 
 public class Operaciones extends javax.swing.JInternalFrame {
@@ -140,6 +141,12 @@ public class Operaciones extends javax.swing.JInternalFrame {
         jLabel6.setForeground(new java.awt.Color(220, 225, 235));
         jLabel6.setText("Precio");
 
+        precio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                precioKeyTyped(evt);
+            }
+        });
+
         jLabel8.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(220, 225, 235));
         jLabel8.setText("No. de venta");
@@ -148,6 +155,11 @@ public class Operaciones extends javax.swing.JInternalFrame {
         folio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 folioActionPerformed(evt);
+            }
+        });
+        folio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                folioKeyTyped(evt);
             }
         });
 
@@ -672,6 +684,26 @@ public class Operaciones extends javax.swing.JInternalFrame {
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
+
+    private void folioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_folioKeyTyped
+        // admitir solo numeros enteros 
+    int key = evt.getKeyChar();    
+     boolean numero = (key >= 48 && key <= 57) || key == 8;   //evalua si la tecla es un número del 0 al 9, 8 es el backspace
+      if(!numero) {
+          evt.consume();    //anula cualquier valor que no sea numero entero  
+      JOptionPane.showMessageDialog(null, "Campo exclusivo para números");
+      }
+    }//GEN-LAST:event_folioKeyTyped
+
+    private void precioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_precioKeyTyped
+        // validacion de numeros con punto decimal
+    int key = evt.getKeyChar();    
+     boolean numero = (key >= 48 && key <= 57) || key == 46 || key == 8;   //evalua si la tecla es un número del 0 al 9, 46= punto decimal
+      if(!numero) {
+          evt.consume();    //anula cualquier valor que no sea numero entero  
+      JOptionPane.showMessageDialog(null, "El precio no admite letras");
+      }
+    }//GEN-LAST:event_precioKeyTyped
 
 
     
