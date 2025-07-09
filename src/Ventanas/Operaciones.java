@@ -46,7 +46,6 @@ public class Operaciones extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         precio = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        folio = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -99,6 +98,8 @@ public class Operaciones extends javax.swing.JInternalFrame {
 
         jLabel27.setText("jLabel27");
 
+        setClosable(true);
+
         jPanel4.setBackground(new java.awt.Color(10, 54, 86));
 
         generar.setBackground(new java.awt.Color(157, 178, 191));
@@ -150,18 +151,6 @@ public class Operaciones extends javax.swing.JInternalFrame {
         jLabel8.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(220, 225, 235));
         jLabel8.setText("No. de venta");
-
-        folio.setBackground(new java.awt.Color(220, 225, 235));
-        folio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                folioActionPerformed(evt);
-            }
-        });
-        folio.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                folioKeyTyped(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(220, 225, 235));
@@ -224,8 +213,6 @@ public class Operaciones extends javax.swing.JInternalFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
-                        .addComponent(folio, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
@@ -271,8 +258,7 @@ public class Operaciones extends javax.swing.JInternalFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(folio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
@@ -424,16 +410,39 @@ public class Operaciones extends javax.swing.JInternalFrame {
         jLabel21.setForeground(new java.awt.Color(220, 225, 235));
         jLabel21.setText("Nombre");
 
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
         jLabel22.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(220, 225, 235));
         jLabel22.setText("RFC");
+
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
 
         jLabel23.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(220, 225, 235));
         jLabel23.setText("Dirección");
 
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+
         date1.setBackground(new java.awt.Color(220, 225, 235));
         date1.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
+        date1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                date1ActionPerformed(evt);
+            }
+        });
 
         jLabel24.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(220, 225, 235));
@@ -446,6 +455,12 @@ public class Operaciones extends javax.swing.JInternalFrame {
         jLabel26.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(220, 225, 235));
         jLabel26.setText("FOLIO INTERNO");
+
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
 
         jLabel28.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(220, 225, 235));
@@ -496,6 +511,18 @@ public class Operaciones extends javax.swing.JInternalFrame {
         jLabel34.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(220, 225, 235));
         jLabel34.setText("$");
+
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
+
+        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField6ActionPerformed(evt);
+            }
+        });
 
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -677,23 +704,9 @@ public class Operaciones extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_idProductoActionPerformed
 
-    private void folioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_folioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_folioActionPerformed
-
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
-
-    private void folioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_folioKeyTyped
-        // admitir solo numeros enteros 
-    int key = evt.getKeyChar();    
-     boolean numero = (key >= 48 && key <= 57) || key == 8;   //evalua si la tecla es un número del 0 al 9, 8 es el backspace
-      if(!numero) {
-          evt.consume();    //anula cualquier valor que no sea numero entero  
-      JOptionPane.showMessageDialog(null, "Campo exclusivo para números");
-      }
-    }//GEN-LAST:event_folioKeyTyped
 
     private void precioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_precioKeyTyped
         // validacion de numeros con punto decimal
@@ -705,6 +718,34 @@ public class Operaciones extends javax.swing.JInternalFrame {
       }
     }//GEN-LAST:event_precioKeyTyped
 
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void date1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_date1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_date1ActionPerformed
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6ActionPerformed
+
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -713,7 +754,6 @@ public class Operaciones extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cantidad;
     private javax.swing.JTextField date;
     private javax.swing.JTextField date1;
-    private javax.swing.JTextField folio;
     private javax.swing.JButton generar;
     private javax.swing.JTextField idCliente;
     private javax.swing.JTextField idProducto;
