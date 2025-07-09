@@ -7,14 +7,19 @@ package Clases;
 public class Producto {
     private String nombre;
     private int idProducts, stock;
-    private String tamannio;
+    //private String tamannio;
+    private String tipo;
+    private String categoria;
     private float precio;
 
-    public Producto(String nombre, int idProducts, int stock, String tamannio, float precio) {
+    //public Producto(String nombre, int idProducts, int stock, String tamannio, String tipo, String categoria, float precio) {
+    public Producto(String nombre, int idProducts, int stock, String tipo, String categoria, float precio, Object par6) {
         this.nombre = nombre;
         this.idProducts = idProducts;
         this.stock = stock;
-        this.tamannio = tamannio;
+       // this.tamannio = tamannio;
+        this.tipo = tipo;
+        this.categoria = categoria;
         this.precio = precio;
     }
 
@@ -42,12 +47,28 @@ public class Producto {
         this.stock = stock;
     }
 
-    public String getTamannio() {
+    /*public String getTamannio() {
         return tamannio;
     }
 
     public void setTamannio(String tamannio) {
         this.tamannio = tamannio;
+    }*/
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public float getPrecio() {
