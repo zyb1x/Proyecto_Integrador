@@ -60,7 +60,6 @@ public class Inicio extends javax.swing.JFrame {
         registroProductos.setBackground(new java.awt.Color(3, 68, 96));
         registroProductos.setFont(new java.awt.Font("Georgia", 1, 10)); // NOI18N
         registroProductos.setForeground(new java.awt.Color(220, 225, 235));
-        registroProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/registered-gray.png"))); // NOI18N
         registroProductos.setText("Registrar \nproducto");
         registroProductos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         registroProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -99,7 +98,7 @@ public class Inicio extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(139, Short.MAX_VALUE)
+                .addContainerGap(140, Short.MAX_VALUE)
                 .addComponent(iniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(registrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -107,7 +106,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(registroProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(ventas, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(273, Short.MAX_VALUE))
+                .addContainerGap(272, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(19, 25, 54));
