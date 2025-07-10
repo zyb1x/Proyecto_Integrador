@@ -57,6 +57,7 @@ public class Registro extends javax.swing.JInternalFrame {
     
     }
     
+       
    
     public static ArrayList<Empleado> Datos = new ArrayList<Empleado>();
     
@@ -321,13 +322,9 @@ public class Registro extends javax.swing.JInternalFrame {
         String Correo = correo.getText();
         String password = contrasennia.getText();
         String confirmPwd = confContrasenia.getText();
-        
-        
-        
+                
         Empleado e = new Empleado(IdEmpleado,Departamento, Turno,Telefono,password,Correo);
-        
         Datos.add(e);
-        
         insertarEmpleado(IdEmpleado, Departamento, Turno, Telefono, password, Correo);
         
     }//GEN-LAST:event_jButton1ActionPerformed

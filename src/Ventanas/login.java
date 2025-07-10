@@ -42,6 +42,25 @@ public class login extends javax.swing.JInternalFrame {
         return false;
     }
 }
+   
+   public String obtenerDpto(int idEmpleado){
+        String departamento = null;
+        String sql = "Select Dpto FROM EMPLEADO WHERE idEmpleado=?";
+        try (Connection con = connection.getConnection();
+         PreparedStatement pstmt = con.prepareStatement(sql)) {
+        
+        pstmt.setInt(1, idEmpleado);  // Previene SQL Injection
+        ResultSet rs = pstmt.executeQuery();
+        
+        if (rs.next()) {
+            departamento = rs.getString("nombre_departamento");
+        }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos");
+        System.err.println("Error SQL: " + e.getMessage());
+    }
+        return departamento;
+    } 
     
     public login() {
         initComponents();
@@ -63,7 +82,6 @@ public class login extends javax.swing.JInternalFrame {
         jEditorPane1 = new javax.swing.JEditorPane();
         jSpinner1 = new javax.swing.JSpinner();
         jProgressBar1 = new javax.swing.JProgressBar();
-        jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -100,20 +118,6 @@ public class login extends javax.swing.JInternalFrame {
         jScrollPane2.setViewportView(jEditorPane1);
 
         setClosable(true);
-
-        jPanel1.setBackground(new java.awt.Color(10, 54, 86));
-        jPanel1.setForeground(new java.awt.Color(51, 51, 51));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 684, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 637, Short.MAX_VALUE)
-        );
 
         jPanel2.setBackground(new java.awt.Color(10, 54, 86));
 
@@ -415,19 +419,14 @@ public class login extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(71, Short.MAX_VALUE))
         );
 
@@ -441,6 +440,7 @@ public class login extends javax.swing.JInternalFrame {
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         String correoEm = email.getText().trim();
         String pass = new String(pwd.getPassword());
+        
         if (validarCredenciales(correoEm, pass)) {
             Operaciones f = new Operaciones();
             f.setVisible(true);
@@ -448,6 +448,10 @@ public class login extends javax.swing.JInternalFrame {
             Inicio.panelPrincipal.add(f);
             this.dispose();  
         }
+        int idEm = Integer.parseInt(Registro.idEmpleado.getText());
+        
+        String departamento = obtenerDpto(idEm);
+        
         /*String correoEm = email.getText().trim();
         String pass     = new String(pwd.getPassword());
         validarCredenciales(correoEm,pass);
@@ -497,7 +501,6 @@ public class login extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
