@@ -11,12 +11,11 @@ public class connection {
     private static final String USER = "root";
     private static final String PASSWORD = "";
 
-    // Método para obtener la conexión
+    // metodo para obtener la conexión
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 
-    // Método para cerrar la conexión (opcional, útil si no usas try-with-resources)
     public static void closeConnection(Connection conn) {
         if (conn != null) {
             System.out.println("Conexion exitosa");
