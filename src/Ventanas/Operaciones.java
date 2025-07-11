@@ -44,7 +44,7 @@ public void cliente(String rfc, String apellidoP, String apellidoM) {
 //obtener idCliente
 public int getIdCliente(String paterno){
      int IDCliente = 1;
-    String sql = "Select idCliente FROM CLIENTE WHERE apellidoP = ?";
+    String sql = "SELECT idCliente FROM CLIENTE WHERE apellidoP = ?";
     
     try (Connection con = connection.getConnection();
             PreparedStatement pstmt = con.prepareStatement(sql)){
@@ -61,6 +61,26 @@ public int getIdCliente(String paterno){
     }
     return IDCliente;
 }
+
+ public int getIdEmpleado(String correo) {
+     int idEmpleado = 1;
+     String sql = "SELECT idEmpleado FROM EMPLEADO WHERE correo = ?";
+     
+     try (Connection con = connection.getConnection();
+             PreparedStatement pstmt = con.prepareStatement(sql)) {
+         pstmt.setString(6, correo);
+         ResultSet rs = pstmt.executeQuery();
+         
+         if (rs.next()) {
+             idEmpleado = rs.getInt("idEmpleado");
+         }
+         
+     } catch(SQLException e) {
+         JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos");
+         System.err.print("Error SQL: " + e.getMessage());
+     }
+     return idEmpleado;
+ }
 
 // Método para generar venta corregido
 public void generarVenta(int idVenta,int idCliente, int idEmpleado, String fecha,
@@ -1343,7 +1363,6 @@ public void generarVenta(int idVenta,int idCliente, int idEmpleado, String fecha
         cliente(null, paterno, materno);
         
         int idCliente = getIdCliente(paterno);
-        int idEmpleado = 
         
     }//GEN-LAST:event_generarActionPerformed
 
