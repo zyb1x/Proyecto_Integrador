@@ -4,13 +4,15 @@ package Ventanas;
 import BaseDatos.connection;
 
 
+
 public class Inicio extends javax.swing.JFrame {
 
-    
 
     public Inicio() {
         initComponents();
     }
+    
+    
 
     
     @SuppressWarnings("unchecked")
@@ -170,7 +172,11 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarseActionPerformed
 
     private void registroProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroProductosActionPerformed
-        // TODO add your handling code here:
+      
+   //se eliminará o modificará el nombre de ese botón 
+       //dice milca que no es necesario que se abra directamente el registro de productos que solo se abrirá el internalframe
+       //de operaciones dependiendo de si entra el vendedor o el almacenista, y se podrá entrar solo después de iniciar sesión
+       //y ya
     }//GEN-LAST:event_registroProductosActionPerformed
 
     private void ventasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ventasActionPerformed
