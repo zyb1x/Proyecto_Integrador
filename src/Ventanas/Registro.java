@@ -40,9 +40,10 @@ public class Registro extends javax.swing.JInternalFrame {
             ResultSet rs = stmt.executeQuery("SELECT * FROM EMPLEADO");
             
             if (stmt.execute("SELECT * FROM EMPLEADO")) {
-        rs = stmt.getResultSet();
+            rs = stmt.getResultSet();
             }
              pstmt.executeUpdate();
+             JOptionPane.showMessageDialog(null, "Se registró correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             System.out.println("Empleado insertado correctamente.");
             
             System.out.println(rs);
@@ -53,9 +54,9 @@ public class Registro extends javax.swing.JInternalFrame {
             
     } catch (SQLException e){
         System.out.print(e);
+        JOptionPane.showMessageDialog(null, "Error al registrar empleado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     } 
-    
-    }
+}
     
        
    
@@ -326,7 +327,8 @@ public class Registro extends javax.swing.JInternalFrame {
         Empleado e = new Empleado(IdEmpleado,Departamento, Turno,Telefono,password,Correo);
         Datos.add(e);
         insertarEmpleado(IdEmpleado, Departamento, Turno, Telefono, password, Correo);
-        
+        //cierra ventana
+        this.dispose();      
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void confContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confContraseniaActionPerformed
