@@ -473,7 +473,11 @@ public class login extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAdministradorActionPerformed
 
     private void btnRecuperarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecuperarActionPerformed
-        // TODO add your handling code here:
+  RecuperarContrasena R = new RecuperarContrasena();
+   R.setVisible(true);
+       this.dispose();
+        R.show();
+        Inicio.panelPrincipal.add(R);
     }//GEN-LAST:event_btnRecuperarActionPerformed
 
     private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
