@@ -74,7 +74,6 @@ public class Inicio extends javax.swing.JFrame {
         ventas.setBackground(new java.awt.Color(3, 68, 96));
         ventas.setFont(new java.awt.Font("Georgia", 1, 10)); // NOI18N
         ventas.setForeground(new java.awt.Color(220, 225, 235));
-        ventas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dollar-circle-gray.png"))); // NOI18N
         ventas.setText("Ventas");
         ventas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ventas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -100,7 +99,7 @@ public class Inicio extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(140, Short.MAX_VALUE)
+                .addContainerGap(154, Short.MAX_VALUE)
                 .addComponent(iniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(registrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -108,7 +107,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(registroProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(ventas, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(272, Short.MAX_VALUE))
+                .addContainerGap(285, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(19, 25, 54));
@@ -116,7 +115,6 @@ public class Inicio extends javax.swing.JFrame {
         jLabel2.setBackground(new java.awt.Color(255, 255, 204));
         jLabel2.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(189, 194, 199));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home-alt-claro.png"))); // NOI18N
         jLabel2.setText("   I  n  i  c  i  o");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -126,18 +124,28 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel2)
-                .addContainerGap(602, Short.MAX_VALUE))
+                .addContainerGap(667, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel2)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panelPrincipal.setBackground(new java.awt.Color(10, 54, 86));
-        panelPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
+        panelPrincipal.setLayout(panelPrincipalLayout);
+        panelPrincipalLayout.setHorizontalGroup(
+            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 769, Short.MAX_VALUE)
+        );
+        panelPrincipalLayout.setVerticalGroup(
+            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 636, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -172,7 +180,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarseActionPerformed
 
     private void registroProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroProductosActionPerformed
-      
+        
    //se eliminará o modificará el nombre de ese botón 
        //dice milca que no es necesario que se abra directamente el registro de productos que solo se abrirá el internalframe
        //de operaciones dependiendo de si entra el vendedor o el almacenista, y se podrá entrar solo después de iniciar sesión

@@ -1,5 +1,6 @@
 
 package Ventanas;
+import java.util.ArrayList;
 //vimport proyectointegrador3.App;
 
 import BaseDatos.connection;
@@ -15,6 +16,7 @@ import javax.swing.JOptionPane;
 
 public class login extends javax.swing.JInternalFrame {
 
+   
    public static boolean validarCredenciales( String correo,String password) {
     String sql = "SELECT correo,password FROM EMPLEADO WHERE correo = ?";
     
@@ -61,6 +63,7 @@ public class login extends javax.swing.JInternalFrame {
     }
         return departamento;
     } 
+   
     
     public login() {
         initComponents();
@@ -108,6 +111,7 @@ public class login extends javax.swing.JInternalFrame {
         btnRecuperar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -120,8 +124,6 @@ public class login extends javax.swing.JInternalFrame {
         setClosable(true);
 
         jPanel2.setBackground(new java.awt.Color(10, 54, 86));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user-circle-claro.png"))); // NOI18N
 
         jLabel1.setBackground(new java.awt.Color(10, 54, 86));
         jLabel1.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
@@ -281,7 +283,6 @@ public class login extends javax.swing.JInternalFrame {
         jLabel2.setBackground(new java.awt.Color(255, 255, 204));
         jLabel2.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(189, 194, 199));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user-plus-64px.png"))); // NOI18N
         jLabel2.setText("R e g i s t r o");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -344,16 +345,17 @@ public class login extends javax.swing.JInternalFrame {
         jLabel11.setForeground(new java.awt.Color(220, 225, 235));
         jLabel11.setText(" C O N T R A S E Ñ A:");
 
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/user-circle-claro.png"))); // NOI18N
+        jLabel12.setText("jLabel12");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(180, 180, 180)
+                .addGap(169, 169, 169)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
                     .addComponent(jLabel10)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
@@ -371,22 +373,36 @@ public class login extends javax.swing.JInternalFrame {
                             .addComponent(jLabel11))
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addGap(86, 86, 86)
-                            .addComponent(btnAdministrador))))
-                .addContainerGap(215, Short.MAX_VALUE))
+                            .addComponent(btnAdministrador)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(174, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(0, 331, Short.MAX_VALUE)
+                    .addGap(0, 341, Short.MAX_VALUE)
                     .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 331, Short.MAX_VALUE)))
+                    .addGap(0, 342, Short.MAX_VALUE)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(54, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)))
                 .addComponent(jLabel10)
                 .addGap(3, 3, 3)
                 .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -419,15 +435,16 @@ public class login extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -445,12 +462,15 @@ public class login extends javax.swing.JInternalFrame {
             Operaciones f = new Operaciones();
             f.setVisible(true);
             f.show();
+            f.pack();
+            f.setLocation(null);
             Inicio.panelPrincipal.add(f);
-            this.dispose();  
+           // this.dispose();  
         }
-        int idEm = Integer.parseInt(Registro.idEmpleado.getText());
+        //No me acuerso para que es eso aaaaaaaaaaaaaaaaaaaaaaaaa
+        //int idEm = Integer.parseInt(Registro.idEmpleado.getText());
         
-        String departamento = obtenerDpto(idEm);
+        //String departamento = obtenerDpto(idEm);
         
         /*String correoEm = email.getText().trim();
         String pass     = new String(pwd.getPassword());
@@ -490,13 +510,14 @@ public class login extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnIniciar;
     private javax.swing.JButton btnRecuperar;
     private javax.swing.JButton btnRegistrarse;
-    private javax.swing.JTextField email;
+    public static javax.swing.JTextField email;
     private javax.swing.JButton jButton4;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
