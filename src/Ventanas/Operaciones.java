@@ -17,7 +17,9 @@ import javax.swing.table.DefaultTableModel;
 public class Operaciones extends javax.swing.JInternalFrame {
     
    
-   
+   public JTabbedPane getTabPanel() {
+    return TabPanel;
+}
    
    
     DefaultTableModel modelo;
@@ -264,8 +266,8 @@ public void generarVenta(int idVenta,int idCliente, int idEmpleado, String fecha
 
         jLabel13 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        tabpanel = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        TabPanel = new javax.swing.JTabbedPane();
+        FacturacionPan = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -299,7 +301,7 @@ public void generarVenta(int idVenta,int idCliente, int idEmpleado, String fecha
         jTextField7 = new javax.swing.JTextField();
         generarFactura = new javax.swing.JButton();
         cancelar1 = new javax.swing.JButton();
-        jPanel6 = new javax.swing.JPanel();
+        AlmacenPan = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jLabel41 = new javax.swing.JLabel();
@@ -329,7 +331,7 @@ public void generarVenta(int idVenta,int idCliente, int idEmpleado, String fecha
         tipo = new javax.swing.JComboBox<>();
         categoria = new javax.swing.JComboBox<>();
         guardar = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        VentasPan = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -689,24 +691,24 @@ public void generarVenta(int idVenta,int idCliente, int idEmpleado, String fecha
                 .addContainerGap(154, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout FacturacionPanLayout = new javax.swing.GroupLayout(FacturacionPan);
+        FacturacionPan.setLayout(FacturacionPanLayout);
+        FacturacionPanLayout.setHorizontalGroup(
+            FacturacionPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(FacturacionPanLayout.createSequentialGroup()
                 .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(2, 2, 2))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        FacturacionPanLayout.setVerticalGroup(
+            FacturacionPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FacturacionPanLayout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        tabpanel.addTab("Facturación", jPanel1);
+        TabPanel.addTab("Facturación", FacturacionPan);
 
         jPanel10.setBackground(new java.awt.Color(18, 24, 51));
 
@@ -828,22 +830,22 @@ public void generarVenta(int idVenta,int idCliente, int idEmpleado, String fecha
                 .addContainerGap(225, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        javax.swing.GroupLayout AlmacenPanLayout = new javax.swing.GroupLayout(AlmacenPan);
+        AlmacenPan.setLayout(AlmacenPanLayout);
+        AlmacenPanLayout.setHorizontalGroup(
+            AlmacenPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AlmacenPanLayout.createSequentialGroup()
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        AlmacenPanLayout.setVerticalGroup(
+            AlmacenPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AlmacenPanLayout.createSequentialGroup()
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        tabpanel.addTab("Consultar almacén", jPanel6);
+        TabPanel.addTab("Consultar almacén", AlmacenPan);
 
         jPanel8.setBackground(new java.awt.Color(18, 24, 51));
 
@@ -986,9 +988,9 @@ public void generarVenta(int idVenta,int idCliente, int idEmpleado, String fecha
                 .addContainerGap())
         );
 
-        tabpanel.addTab("Registrar productos", RegistrarProductos);
+        TabPanel.addTab("Registrar productos", RegistrarProductos);
 
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        VentasPan.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel5.setBackground(new java.awt.Color(19, 25, 54));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1226,19 +1228,19 @@ public void generarVenta(int idVenta,int idCliente, int idEmpleado, String fecha
 
         jPanel5.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 74, 1010, -1));
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 580));
+        VentasPan.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 580));
 
-        tabpanel.addTab("Ventas", jPanel2);
+        TabPanel.addTab("Ventas", VentasPan);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabpanel)
+            .addComponent(TabPanel)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabpanel)
+            .addComponent(TabPanel)
         );
 
         pack();
@@ -1377,7 +1379,11 @@ public void generarVenta(int idVenta,int idCliente, int idEmpleado, String fecha
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel AlmacenPan;
+    private javax.swing.JPanel FacturacionPan;
     private javax.swing.JPanel RegistrarProductos;
+    private javax.swing.JTabbedPane TabPanel;
+    private javax.swing.JPanel VentasPan;
     private javax.swing.JTextField apellidoM;
     private javax.swing.JTextField apellidoP;
     private javax.swing.JTextField bp;
@@ -1441,14 +1447,11 @@ public void generarVenta(int idVenta,int idCliente, int idEmpleado, String fecha
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
@@ -1468,7 +1471,6 @@ public void generarVenta(int idVenta,int idCliente, int idEmpleado, String fecha
     private javax.swing.JTextField precio1;
     private javax.swing.JTextField rfc;
     private javax.swing.JTextField stock;
-    private javax.swing.JTabbedPane tabpanel;
     private javax.swing.JComboBox<String> tipo;
     private javax.swing.JButton todost;
     private javax.swing.JTextField total;

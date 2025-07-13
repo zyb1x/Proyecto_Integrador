@@ -174,9 +174,7 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registrarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarProductosActionPerformed
-    Adm adm = new Adm();
-    adm.setVisible(true);
-    Inicio.panelPrincipal.add(adm);
+    
    //se eliminará o modificará el nombre de ese botón 
        //dice milca que no es necesario que se abra directamente el registro de productos que solo se abrirá el internalframe
        //de operaciones dependiendo de si entra el vendedor o el almacenista, y se podrá entrar solo después de iniciar sesión
