@@ -8,10 +8,11 @@ public class Empleado{
     private String telefono;
     private String correo;
     private String contrasenia;
+    private String puesto;
     
     //constructor con parametros
 
-    public Empleado(int idEmpleado, String Dpto, String turno, String telefono, String correo, String contrasenia) {
+    public Empleado(int idEmpleado, String Dpto, String turno, String telefono, String correo, String contrasenia, String puesto) {
         
         this.Dpto = Dpto;
         this.idEmpleado = idEmpleado;
@@ -19,14 +20,7 @@ public class Empleado{
         this.telefono = telefono;
         this.correo = correo;
         this.contrasenia = contrasenia;
-    }
-
-    public String getDpto() {
-        return Dpto;
-    }
-
-    public void setNumDpto(String Dpto) {
-        this.Dpto = Dpto;
+        this.puesto = puesto;
     }
 
     public int getIdEmpleado() {
@@ -37,6 +31,14 @@ public class Empleado{
         this.idEmpleado = idEmpleado;
     }
 
+    public String getDpto() {
+        return Dpto;
+    }
+
+    public void setDpto(String Dpto) {
+        this.Dpto = Dpto;
+    }
+
     public String getTurno() {
         return turno;
     }
@@ -44,19 +46,20 @@ public class Empleado{
     public void setTurno(String turno) {
         this.turno = turno;
     }
-    
-    public String getTelefono(){
+
+    public String getTelefono() {
         return telefono;
     }
-    public void setTelefono(String telefono){
+
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    
-    public String getCorreo(){
+
+    public String getCorreo() {
         return correo;
     }
-    
-    public void setCorreo(String correo){
+
+    public void setCorreo(String correo) {
         this.correo = correo;
     }
 
@@ -64,10 +67,19 @@ public class Empleado{
         return contrasenia;
     }
 
-    public void setContrasena(String contrasenia) {
+    public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
 
+    public String getPuesto() {
+        return puesto;
+    }
+
+    public void setPuesto(String puesto) {
+        this.puesto = puesto;
+    }
+
+    
     
 
     
