@@ -19,47 +19,37 @@ import javax.swing.JOptionPane;
 public class login extends javax.swing.JInternalFrame {
 
    
-   public static Empleado validarCredenciales( String correo,String password) {
-    String sql = "SELECT idEmpleado, correo, password, puesto, telefono, Dpto, turno FROM EMPLEADO WHERE correo = ?";
-
+   public static boolean validarCredenciales( String password,String correo) {
+    String sql = "SELECT correo,password FROM EMPLEADO WHERE correo = ?";
+    
     try (Connection con = connection.getConnection();
          PreparedStatement pstmt = con.prepareStatement(sql)) {
         
-        pstmt.setString(1, correo);
+        pstmt.setString(1, correo);  // Previene SQL Injection
+        
         try (ResultSet rs = pstmt.executeQuery()) {
             if (rs.next()) {
                 String storedPassword = rs.getString("password");
+                
+                // Comparación directa (texto plano)
                 if (password.equals(storedPassword)) {
-                    
-                    
-                    
-                    Empleado e = new Empleado(
-                    rs.getInt("idEmpleado"),
-                    rs.getString("Dpto"),
-                    rs.getString("turno"),
-                    rs.getString("correo"),
-                    rs.getString("telefono"),
-                    rs.getString("password"),
-                    rs.getString("puesto")
-);
                     JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso");
-                    
-                    return e;
+                    return true;
                 }
             }
-            JOptionPane.showMessageDialog(null, "Correo, ID o contraseña incorrectos");
-            return null;
+            JOptionPane.showMessageDialog(null, "Correo o contraseña incorrectos");
+            return false;
         }
-    } catch (SQLException ex) {
+    } catch (SQLException e) {
         JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos");
-        ex.printStackTrace();
-        return null;
+        System.err.println("Error SQL: " + e.getMessage());
+        return false;
     }
 }
    
    public String obtenerDpto(int idEmpleado){
         String departamento = null;
-        String sql = "Select Dpto FROM EMPLEADO WHERE idEmpleado=?";
+        String sql = "Select puesto FROM EMPLEADO WHERE idEmpleado=?";
         try (Connection con = connection.getConnection();
          PreparedStatement pstmt = con.prepareStatement(sql)) {
         
@@ -466,8 +456,8 @@ public class login extends javax.swing.JInternalFrame {
         String correo = email.getText().trim();
         String pass   = new String(pwd.getPassword());
 
-    Empleado emp = validarCredenciales(correo, pass);
-    if (emp == null) {
+    //Empleado emp = validarCredenciales(correo, pass);
+    /*if (emp == null) {
     JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
     return;
     }
@@ -508,7 +498,7 @@ public class login extends javax.swing.JInternalFrame {
     }
     this.dispose();
         
-       
+       */
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     private void pwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwdActionPerformed

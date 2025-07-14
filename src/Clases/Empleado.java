@@ -3,7 +3,6 @@ package Clases;
 
 public class Empleado{
     private int idEmpleado;
-    private String Dpto;
     private String turno;
     private String telefono;
     private String correo;
@@ -12,9 +11,8 @@ public class Empleado{
     
     //constructor con parametros
 
-    public Empleado(int idEmpleado, String Dpto, String turno, String telefono, String correo, String contrasenia, String puesto) {
+    public Empleado(int idEmpleado, String turno, String telefono, String correo, String contrasenia, String puesto) {
         
-        this.Dpto = Dpto;
         this.idEmpleado = idEmpleado;
         this.turno = turno;
         this.telefono = telefono;
@@ -29,14 +27,6 @@ public class Empleado{
 
     public void setIdEmpleado(int idEmpleado) {
         this.idEmpleado = idEmpleado;
-    }
-
-    public String getDpto() {
-        return Dpto;
-    }
-
-    public void setDpto(String Dpto) {
-        this.Dpto = Dpto;
     }
 
     public String getTurno() {

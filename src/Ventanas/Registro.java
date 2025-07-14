@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 
 public class Registro extends javax.swing.JInternalFrame {
  
-    public static void insertarEmpleado(int idEmpleado, String departamento, 
+    public static void insertarEmpleado(int idEmpleado, 
             String turno, String telefono, String password, String correo, String puesto){
         
     String sql = "INSERT INTO EMPLEADO (idEmpleado, Dpto, turno, telefono, password, correo, puesto) "
@@ -30,12 +30,11 @@ public class Registro extends javax.swing.JInternalFrame {
             ){
         
             pstmt.setInt(1, idEmpleado);
-            pstmt.setString(2, departamento);
-            pstmt.setString(3, turno);
-            pstmt.setString(4, telefono);
-            pstmt.setString(5, password);
-            pstmt.setString(6, correo);
-            pstmt.setString(7, puesto);
+            pstmt.setString(2, turno);
+            pstmt.setString(3, telefono);
+            pstmt.setString(4, password);
+            pstmt.setString(5, correo);
+            pstmt.setString(6, puesto);
 
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM EMPLEADO");
@@ -89,11 +88,9 @@ public class Registro extends javax.swing.JInternalFrame {
         confContrasenia = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         turno = new javax.swing.JComboBox<>();
-        departamento = new javax.swing.JTextField();
         correo = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         puesto = new javax.swing.JComboBox<>();
@@ -159,10 +156,6 @@ public class Registro extends javax.swing.JInternalFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Confirmar contraseña:");
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Departamento:");
-
         jLabel10.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Turno:");
@@ -173,9 +166,6 @@ public class Registro extends javax.swing.JInternalFrame {
 
         turno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "seleccionar", "matutino", "vespertino", "nocturno" }));
         turno.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(19, 25, 54), null));
-
-        departamento.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        departamento.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(19, 25, 54), null));
 
         correo.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         correo.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(19, 25, 54), null));
@@ -194,29 +184,19 @@ public class Registro extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(300, 300, 300)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(300, 300, 300)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(300, 300, 300)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(300, 300, 300)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(turno, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(departamento, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(idEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(confContrasenia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -235,9 +215,7 @@ public class Registro extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22)
+                        .addGap(30, 30, 30)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -250,9 +228,7 @@ public class Registro extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(idEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(departamento, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(29, 29, 29)
                         .addComponent(turno, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -312,7 +288,6 @@ public class Registro extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(idEmpleado.getText().isEmpty() || 
-       departamento.getText().isEmpty() || 
        telefono.getText().isEmpty() || 
        correo.getText().isEmpty() || 
        contrasennia.getText().isEmpty() || 
@@ -325,7 +300,6 @@ public class Registro extends javax.swing.JInternalFrame {
         return;
     }  
         int IdEmpleado = Integer.parseInt(idEmpleado.getText());
-        String Departamento = departamento.getText();
         String Turno = turno.getSelectedItem().toString();
         String Telefono = telefono.getText();
         String Correo = correo.getText();
@@ -333,9 +307,9 @@ public class Registro extends javax.swing.JInternalFrame {
         String confirmPwd = confContrasenia.getText();
         String Puesto = puesto.getSelectedItem().toString();
                 
-        Empleado e = new Empleado(IdEmpleado,Departamento, Turno,Telefono,password,Correo,Puesto);
+        Empleado e = new Empleado(IdEmpleado, Turno,Telefono,password,Correo,Puesto);
         Datos.add(e);
-        insertarEmpleado(IdEmpleado, Departamento, Turno, Telefono, password, Correo, Puesto);
+        insertarEmpleado(IdEmpleado, Turno, Telefono, password, Correo, Puesto);
         //cierra ventana
         this.dispose();      
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -353,7 +327,6 @@ public class Registro extends javax.swing.JInternalFrame {
     public static javax.swing.JPasswordField confContrasenia;
     public static javax.swing.JPasswordField contrasennia;
     public static javax.swing.JTextField correo;
-    public static javax.swing.JTextField departamento;
     public static javax.swing.JTextField idEmpleado;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
@@ -364,7 +337,6 @@ public class Registro extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     public static javax.swing.JComboBox<String> puesto;

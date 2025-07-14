@@ -1357,7 +1357,7 @@ public void generarVenta(int idVenta,int idCliente, int idEmpleado, String fecha
         int idEmpleado = getIdEmpleado(correo);
         int idVenta = IDVenta(idCliente);
         
-        generarVenta(idVenta,idCliente,idEmpleado, " ",Producto, Cantidad, 
+        generarVenta(idVenta,idCliente,idEmpleado, "Fecha",Producto, Cantidad, 
                          Precio, subtotal, pago);
         
     }//GEN-LAST:event_generarActionPerformed
