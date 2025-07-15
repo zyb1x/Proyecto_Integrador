@@ -22,8 +22,8 @@ public class Registro extends javax.swing.JInternalFrame {
     public static void insertarEmpleado(int idEmpleado, 
             String turno, String telefono, String password, String correo, String puesto){
         
-    String sql = "INSERT INTO EMPLEADO (idEmpleado, Dpto, turno, telefono, password, correo, puesto) "
-            + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+    String sql = "INSERT INTO EMPLEADO (idEmpleado, turno, telefono, password, correo, puesto) "
+            + "VALUES (?, ?, ?, ?, ?, ?)";
     
     try (Connection con = connection.getConnection();
             PreparedStatement pstmt = con.prepareStatement(sql)

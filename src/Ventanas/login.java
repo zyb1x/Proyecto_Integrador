@@ -1,8 +1,6 @@
 
 package Ventanas;
 import java.util.ArrayList;
-//vimport proyectointegrador3.App;
-
 import BaseDatos.connection;
 import Clases.Empleado;
 import static Ventanas.Inicio.panelPrincipal;
@@ -19,7 +17,7 @@ import javax.swing.JOptionPane;
 public class login extends javax.swing.JInternalFrame {
 
    
-   public static boolean validarCredenciales( String password,String correo) {
+   public static boolean validarCredenciales(String password,String correo) {
     String sql = "SELECT correo,password FROM EMPLEADO WHERE correo = ?";
     
     try (Connection con = connection.getConnection();
@@ -47,23 +45,24 @@ public class login extends javax.swing.JInternalFrame {
     }
 }
    
-   public String obtenerDpto(int idEmpleado){
-        String departamento = null;
-        String sql = "Select puesto FROM EMPLEADO WHERE idEmpleado=?";
+   public String obtenerPuesto(String correo){
+        String puesto = null;
+        String sql = "Select puesto FROM EMPLEADO WHERE correo=?";
         try (Connection con = connection.getConnection();
          PreparedStatement pstmt = con.prepareStatement(sql)) {
         
-        pstmt.setInt(1, idEmpleado);  
-        ResultSet rs = pstmt.executeQuery();
         
+        pstmt.setString(1, correo);  
+        ResultSet rs = pstmt.executeQuery();
         if (rs.next()) {
-            departamento = rs.getString("nombre_departamento");
+            puesto = rs.getString("puesto");
+            
         }
     } catch (SQLException e) {
         JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos");
         System.err.println("Error SQL: " + e.getMessage());
     }
-        return departamento;
+        return puesto;
     } 
    
     
@@ -453,52 +452,56 @@ public class login extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnRegistrarseActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        String correo = email.getText().trim();
-        String pass   = new String(pwd.getPassword());
+    
+    String correo = email.getText();
+    String password = new String(pwd.getPassword()); 
+    
+    boolean acceso = validarCredenciales(password, correo);
 
-    //Empleado emp = validarCredenciales(correo, pass);
-    /*if (emp == null) {
-    JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
-    return;
-    }
-
-    switch (emp.getPuesto().toUpperCase()) {
-    case "ADMINISTRADOR":
+    if (acceso) {
+         String puesto = obtenerPuesto(correo);
+         
+        
+        switch (puesto.toUpperCase()) {
+        case "ADMINISTRADOR":
         Adm adminF = new Adm();
         panelPrincipal.add(adminF);
         adminF.setVisible(true);
         break;
-
-    case "ALMACENISTA":
+        
+        case "ALMACENISTA":
         Operaciones almF = new Operaciones();
-        almF.getTabPanel().setEnabledAt(0, false); 
-        almF.getTabPanel().setEnabledAt(3, false); 
+        almF.getTabPanel().setEnabledAt(0, false);
+        almF.getTabPanel().setEnabledAt(3, false);
         panelPrincipal.add(almF);
         almF.setVisible(true);
         break;
-
-    case "VENDEDOR":
+        
+        case "VENDEDOR":
         Operaciones venF = new Operaciones();
-        venF.getTabPanel().setEnabledAt(1, false); 
-        venF.getTabPanel().setEnabledAt(2, false);  
+        venF.getTabPanel().setEnabledAt(1, false);
+        venF.getTabPanel().setEnabledAt(2, false);
         panelPrincipal.add(venF);
         venF.setVisible(true);
         break;
-
-    default:
+        
+        default:
         Operaciones opF = new Operaciones();
         opF.getTabPanel().setEnabledAt(0, false);
         opF.getTabPanel().setEnabledAt(1, false);
         opF.getTabPanel().setEnabledAt(2, false);
         opF.getTabPanel().setEnabledAt(3, false);
-        JOptionPane.showMessageDialog(this, "Acude al area correspondiente para la asignacion de tu puesto");
+        JOptionPane.showMessageDialog(this, "Acude al área correspondiente para la asignación de tu puesto");
         panelPrincipal.add(opF);
         opF.setVisible(true);
         break;
-    }
-    this.dispose();
+        }
         
-       */
+        this.dispose();
+        
+    } else {
+        JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos");
+    }
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     private void pwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwdActionPerformed

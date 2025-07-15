@@ -11,10 +11,7 @@ import BaseDatos.connection;
 
 
 
-/**
- *
- * @author zybix
- */
+
 public class Adm extends javax.swing.JInternalFrame {
 
     
@@ -27,28 +24,28 @@ public class Adm extends javax.swing.JInternalFrame {
         DefaultTableModel model = new DefaultTableModel();
         
         model.addColumn("ID Empleado");
-        model.addColumn("Departamento");
+        
         model.addColumn("Turno");
         model.addColumn("Teléfono");
         model.addColumn("Contraseña");
         model.addColumn("Correo");
         model.addColumn("Puesto");
 
-        usuarios.setModel(model); // Asegúrate que "usuarios" esté correctamente declarado
+        usuarios.setModel(model); 
 
         try (Connection conn = connection.getConnection();
              Statement st = conn.createStatement();
              ResultSet rs = st.executeQuery(sql)) {
 
             while (rs.next()) {
-                String[] datos = new String[7];
+                String[] datos = new String[6];
                 datos[0] = rs.getString(1);
                 datos[1] = rs.getString(2);
                 datos[2] = rs.getString(3);
                 datos[3] = rs.getString(4);
                 datos[4] = rs.getString(5);
                 datos[5] = rs.getString(6);
-                datos[6] = rs.getString(7);
+                
                 model.addRow(datos);
             }
 
