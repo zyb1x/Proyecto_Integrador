@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -24,10 +26,7 @@ public class Operaciones extends javax.swing.JInternalFrame {
    
     DefaultTableModel modelo;
     ArrayList<Producto> listaProductos = new ArrayList<>();
-    
-    //Id venta, Id cliente, id Producto, fecha
-    //DetalleVenta:idetalle,idVenta idProducto, cantidad precio, subtotal, metodo de pago
-    //primero agregar cliente
+   
    // Primero agregar cliente (este método está correcto)
    //Si se agrega el cliente correctamente
 public void cliente(String rfc, String apellidoP, String apellidoM) {
@@ -52,9 +51,9 @@ public void cliente(String rfc, String apellidoP, String apellidoM) {
 //Apartir de aqui el codigo deja de funcionar
 //obtener idCliente
 public int getIdCliente(String paterno){
-     int IDCliente = Integer.parseInt(null);
+     
     String sql = "SELECT idCliente FROM CLIENTE WHERE apellidoP = ?";
-    
+    int IDCliente = 1;
     
     try (Connection con = connection.getConnection();
             PreparedStatement pstmt = con.prepareStatement(sql)){
@@ -74,7 +73,7 @@ public int getIdCliente(String paterno){
 }
 
  public int getIdEmpleado(String correo) {
-     int idEmpleado = Integer.parseInt(null);
+     int idEmpleado = 1;
      String sql = "SELECT idEmpleado FROM EMPLEADO WHERE correo = ?";
      
      try (Connection con = connection.getConnection();
@@ -94,8 +93,47 @@ public int getIdCliente(String paterno){
      return idEmpleado;
  }
 
- public int IDVenta(int idCliente){
-     int IdVenta = Integer.parseInt(null);
+ 
+// Método para generar venta corregido
+public void generarVenta(int idCliente, int idEmpleado, String fecha) {
+    
+    // Primero insertamos en VENTA
+    String sqlVenta = "INSERT INTO VENTA (idCliente, idEmpleado, fecha) "
+            + "VALUES (?, ?, ?)";
+
+    try (Connection con = connection.getConnection()) {   
+        // Iniciar transacción
+        con.setAutoCommit(false);
+        
+        try {
+            // 1. Insertar en VENTA
+            try (PreparedStatement pstmtVenta = con.prepareStatement(sqlVenta)) {
+                pstmtVenta.setInt(1, idCliente);
+                pstmtVenta.setInt(2, idEmpleado);
+                pstmtVenta.setString(3, fecha);
+                
+                pstmtVenta.executeUpdate();
+                System.out.println("Venta registrada");
+            }
+            
+            // Confirmar transacción
+            con.commit();
+            
+        } catch (SQLException e) {
+            // Revertir en caso de error
+            con.rollback();
+            System.out.println("Error al registrar venta: " + e.getMessage());
+            throw e; // Relanzar la excepción
+        }
+        
+    } catch (SQLException e) {
+        System.out.println("Error de conexión: " + e.getMessage());
+    }
+}
+
+
+public int IDVenta(int idCliente){
+     int IdVenta = 1;
      String sql = "SELECT idVenta FROM VENTA WHERE idCliente=?";
      
      try (Connection con = connection.getConnection();
@@ -112,38 +150,20 @@ public int getIdCliente(String paterno){
      }
      return IdVenta;
  }
-// Método para generar venta corregido
-public void generarVenta(int idVenta,int idCliente, int idEmpleado, String fecha,
-                         int idProducto, int cantidad, 
-                         float precio, float subtotal, String metodoPago) {
-    
-    // Primero insertamos en VENTA
-    String sqlVenta = "INSERT INTO VENTA (idCliente, idEmpleado, fecha) "
-            + "VALUES (?, ?, ?, ?)";
-    
-    // Luego insertamos en DETALLE_VENTA
-    String sqlDetalle = "INSERT INTO DETALLE_VENTA (idVenta, idProducto, "
-            + "cantidad, precio, subtotal, metodoPago) "
-            + "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
+    public void DetalleVenta(int idVenta, int idProductos, 
+        int cantidad, double precio, double subtotal, String metodoPago){
+    // Luego insertamos en DETALLE_VENTA
+    String sqlDetalle = "INSERT INTO DETALLE_VENTA (idVenta, idProductos, cantidad, precio, subtotal, metodoPago)"
+            + "VALUES (?, ?, ?, ?, ?, ?)";
+    
     try (Connection con = connection.getConnection()) {        // Iniciar transacción
         con.setAutoCommit(false);
-        
-        try {
-            // 1. Insertar en VENTA
-            try (PreparedStatement pstmtVenta = con.prepareStatement(sqlVenta)) {
-                pstmtVenta.setInt(1, idCliente);
-                pstmtVenta.setInt(2, idEmpleado);
-                pstmtVenta.setString(3, fecha);
-                
-                pstmtVenta.executeUpdate();
-                System.out.println("Venta registrada");
-            }
-            
-            // 2. Insertar en DETALLE_VENTA
+    // 2. Insertar en DETALLE_VENTA
             try (PreparedStatement pstmtDetalle = con.prepareStatement(sqlDetalle)) {
+                
                 pstmtDetalle.setInt(1, idVenta);
-                pstmtDetalle.setInt(2, idProducto);
+                pstmtDetalle.setInt(2, idProductos);
                 pstmtDetalle.setInt(3, cantidad);
                 pstmtDetalle.setDouble(4, precio);
                 pstmtDetalle.setDouble(5, subtotal);
@@ -151,20 +171,15 @@ public void generarVenta(int idVenta,int idCliente, int idEmpleado, String fecha
                 
                 pstmtDetalle.executeUpdate();
                 System.out.println("Detalle de venta registrado");
-            }
-            
-            // Confirmar transacción
-            con.commit();
-            
-        } catch (SQLException e) {
-            // Revertir en caso de error
-            con.rollback();
+            } catch (SQLException e){
+                con.rollback();
+                
             System.out.println("Error al registrar venta: " + e.getMessage());
             throw e; // Relanzar la excepción
-        }
-        
-    } catch (SQLException e) {
-        System.out.println("Error de conexión: " + e.getMessage());
+            }
+            con.commit();
+    } catch(SQLException e) {
+        System.err.print("Error al conectar con la base de datos");
     }
 }
     
@@ -338,7 +353,6 @@ public void generarVenta(int idVenta,int idCliente, int idEmpleado, String fecha
         generar = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
         apellidoM = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         idProducto = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -356,7 +370,6 @@ public void generarVenta(int idVenta,int idCliente, int idEmpleado, String fecha
         cambio = new javax.swing.JTextField();
         cantidad = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        idCliente = new javax.swing.JTextField();
         jLabel43 = new javax.swing.JLabel();
         apellidoP = new javax.swing.JTextField();
 
@@ -1025,10 +1038,6 @@ public void generarVenta(int idVenta,int idCliente, int idEmpleado, String fecha
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(220, 225, 235));
-        jLabel4.setText("ID Cliente");
-
         jLabel3.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(220, 225, 235));
         jLabel3.setText("ID Producto");
@@ -1086,12 +1095,6 @@ public void generarVenta(int idVenta,int idCliente, int idEmpleado, String fecha
         jLabel16.setForeground(new java.awt.Color(220, 225, 235));
         jLabel16.setText("Apellido materno");
 
-        idCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idClienteActionPerformed(evt);
-            }
-        });
-
         jLabel43.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel43.setForeground(new java.awt.Color(220, 225, 235));
         jLabel43.setText("Apellido Paterno");
@@ -1121,15 +1124,12 @@ public void generarVenta(int idVenta,int idCliente, int idEmpleado, String fecha
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel6)
-                                    .addComponent(jLabel4)
                                     .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel43, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addGap(36, 36, 36)
-                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(idCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(apellidoP, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(38, 38, 38)
+                                        .addComponent(apellidoP, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(2, 2, 2))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1193,7 +1193,7 @@ public void generarVenta(int idVenta,int idCliente, int idEmpleado, String fecha
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel2)
                                 .addGap(30, 30, 30)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1201,11 +1201,7 @@ public void generarVenta(int idVenta,int idCliente, int idEmpleado, String fecha
                                     .addComponent(jLabel9))
                                 .addGap(145, 145, 145))
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(idCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(26, 26, 26)
+                                .addGap(58, 58, 58)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel43)
                                     .addComponent(apellidoP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1341,7 +1337,6 @@ public void generarVenta(int idVenta,int idCliente, int idEmpleado, String fecha
     }//GEN-LAST:event_plasticostActionPerformed
 
     private void generarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarActionPerformed
-        String Cliente = idCliente.getText();
         String paterno = apellidoP.getText();
         String materno = apellidoM.getText();
         int Producto = Integer.parseInt(idProducto.getText());
@@ -1349,6 +1344,7 @@ public void generarVenta(int idVenta,int idCliente, int idEmpleado, String fecha
         float Precio = Float.parseFloat(precio.getText());
         float Total = Float.parseFloat(total.getText());
         String pago = metodoPago.getSelectedItem().toString();
+        String fecha = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         
         float subtotal = Cantidad * Precio;
         
@@ -1363,7 +1359,9 @@ public void generarVenta(int idVenta,int idCliente, int idEmpleado, String fecha
         int idEmpleado = getIdEmpleado(correo);
         int idVenta = IDVenta(idCliente);
         
-        generarVenta(idVenta,idCliente,idEmpleado, "Fecha",Producto, Cantidad, 
+        generarVenta(idCliente,idEmpleado, fecha);
+        
+        DetalleVenta(idVenta,Producto, Cantidad, 
                          Precio, subtotal, pago);
         
     }//GEN-LAST:event_generarActionPerformed
@@ -1373,10 +1371,6 @@ public void generarVenta(int idVenta,int idCliente, int idEmpleado, String fecha
         
         cliente(RFC," "," ");
     }//GEN-LAST:event_generarFacturaActionPerformed
-
-    private void idClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_idClienteActionPerformed
 
     private void apellidoPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoPActionPerformed
         // TODO add your handling code here:
@@ -1407,7 +1401,6 @@ public void generarVenta(int idVenta,int idCliente, int idEmpleado, String fecha
     private javax.swing.JButton generar;
     private javax.swing.JButton generarFactura;
     private javax.swing.JButton guardar;
-    private javax.swing.JTextField idCliente;
     private javax.swing.JTextField idProducto;
     private javax.swing.JTextField idProducts;
     private javax.swing.JLabel jLabel1;
@@ -1443,7 +1436,6 @@ public void generarVenta(int idVenta,int idCliente, int idEmpleado, String fecha
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
