@@ -472,7 +472,7 @@ public class login extends javax.swing.JInternalFrame {
         case "ALMACENISTA":
         Operaciones almF = new Operaciones();
         almF.getTabPanel().setEnabledAt(0, false);
-        almF.getTabPanel().setEnabledAt(2, false);
+        almF.getTabPanel().setEnabledAt(1, false);
         panelPrincipal.add(almF);
         almF.setVisible(true);
         break;
