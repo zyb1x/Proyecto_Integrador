@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Ventanas;
 
 import javax.swing.JButton;
@@ -50,9 +47,9 @@ public class ContrasenaNueva extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Te enviamos un codigo a tu correo en el cual podras ingresar el ");
+        jLabel2.setText("Te enviamos un código a tu correo en el cual podrás ingresar el ");
 
-        jLabel3.setText("codigo recibido para continuar");
+        jLabel3.setText("código recibido para continuar.");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -81,7 +78,9 @@ public class ContrasenaNueva extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("Ingresa el codigo enviado");
+        jLabel4.setFont(new java.awt.Font("Gadugi", 0, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Ingresa el código enviado");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -120,7 +119,8 @@ public class ContrasenaNueva extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(19, 25, 54));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
-        jLabel1.setText("Ingresa el codigo de recuperación");
+        jLabel1.setForeground(new java.awt.Color(189, 194, 199));
+        jLabel1.setText("Ingresa el código de recuperación");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

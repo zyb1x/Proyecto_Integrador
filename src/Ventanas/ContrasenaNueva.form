@@ -130,12 +130,12 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Te enviamos un codigo a tu correo en el cual podras ingresar el "/>
+                <Property name="text" type="java.lang.String" value="Te enviamos un c&#xf3;digo a tu correo en el cual podr&#xe1;s ingresar el "/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
-                <Property name="text" type="java.lang.String" value="codigo recibido para continuar"/>
+                <Property name="text" type="java.lang.String" value="c&#xf3;digo recibido para continuar."/>
               </Properties>
             </Component>
           </SubComponents>
@@ -147,7 +147,13 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ingresa el codigo enviado"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Gadugi" size="12" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Ingresa el c&#xf3;digo enviado"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -185,7 +191,10 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI Black" size="24" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ingresa el codigo de recuperaci&#xf3;n"/>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="c7" green="c2" red="bd" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Ingresa el c&#xf3;digo de recuperaci&#xf3;n"/>
           </Properties>
         </Component>
       </SubComponents>
