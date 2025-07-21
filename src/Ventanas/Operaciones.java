@@ -212,6 +212,8 @@ public int IDVenta(int idCliente){
                }
              }
         });
+             
+             
   
       
      //Codigo perteneciente a almacen 
@@ -265,15 +267,7 @@ public int IDVenta(int idCliente){
           }        
      }   //termina aqui, esto me corresponde
        
-      //conexion de almacen a base de datos
-       
- 
-  
-       
-       
-   
-  
-       //segun eso esto va en registrar productos
+          //segun eso esto va en registrar productos
        private void limpiarCampos() {
             idProducts.setText("");
             nombre.setText("");
@@ -283,6 +277,16 @@ public int IDVenta(int idCliente){
             categoria.removeAllItems();           
         
    }
+       
+      //conexion de almacen a base de datos
+       
+ 
+  
+       
+       
+   
+  
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -979,7 +983,7 @@ public int IDVenta(int idCliente){
                             .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(148, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(generarFactura)
                             .addComponent(cancelar1))
@@ -992,8 +996,8 @@ public int IDVenta(int idCliente){
             FacturacionPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FacturacionPanLayout.createSequentialGroup()
                 .addGroup(FacturacionPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 1089, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 1089, Short.MAX_VALUE))
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 1091, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 1091, Short.MAX_VALUE))
                 .addGap(8, 8, 8))
         );
         FacturacionPanLayout.setVerticalGroup(
@@ -1168,6 +1172,7 @@ public int IDVenta(int idCliente){
 
         jLabel35.setBackground(new java.awt.Color(0, 0, 0));
         jLabel35.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(189, 194, 199));
         jLabel35.setText("R e g i s t r o   d e   p r o d u c t o s");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -1435,7 +1440,7 @@ public int IDVenta(int idCliente){
     }//GEN-LAST:event_establestActionPerformed
 
     private void todostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_todostActionPerformed
-        mostrarPorTipo("Todos");
+        mostrarPorTipo("Mostrar todo");
     }//GEN-LAST:event_todostActionPerformed
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
