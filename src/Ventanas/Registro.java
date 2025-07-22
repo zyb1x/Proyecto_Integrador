@@ -16,44 +16,7 @@ import javax.swing.JOptionPane;
 
 public class Registro extends javax.swing.JInternalFrame {
  
-    public static void insertarEmpleado(int idEmpleado, 
-            String turno, String telefono, String password, String correo, String puesto){
-        
-    String sql = "INSERT INTO EMPLEADO (idEmpleado, turno, telefono, password, correo, puesto) "
-            + "VALUES (?, ?, ?, ?, ?, ?)";
     
-    try (Connection con = connection.getConnection();
-            PreparedStatement pstmt = con.prepareStatement(sql)
-            ){
-        
-            pstmt.setInt(1, idEmpleado);
-            pstmt.setString(2, turno);
-            pstmt.setString(3, telefono);
-            pstmt.setString(4, password);
-            pstmt.setString(5, correo);
-            pstmt.setString(6, puesto);
-
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM EMPLEADO");
-            
-            if (stmt.execute("SELECT * FROM EMPLEADO")) {
-            rs = stmt.getResultSet();
-            }
-             pstmt.executeUpdate();
-             JOptionPane.showMessageDialog(null, "Se registró correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            System.out.println("Empleado insertado correctamente.");
-            
-            System.out.println(rs);
-            
-            rs.close();
-            stmt.close();
-            con.close();
-            
-    } catch (SQLException e){
-        System.out.print(e);
-        JOptionPane.showMessageDialog(null, "Error al registrar empleado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    } 
-}
     
        
    
@@ -306,7 +269,7 @@ public class Registro extends javax.swing.JInternalFrame {
                 
         Empleado e = new Empleado(IdEmpleado, Turno,Telefono,password,Correo,Puesto);
         Datos.add(e);
-        insertarEmpleado(IdEmpleado, Turno, Telefono, password, Correo, Puesto);
+        e.insertarEmpleado(IdEmpleado, Turno, Telefono, password, Correo, Puesto);
         //cierra ventana
         this.dispose();      
     }//GEN-LAST:event_jButton1ActionPerformed
