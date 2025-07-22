@@ -7,7 +7,6 @@ package Clases;
 public class Producto {
     private String nombre;
     private int idProducts, stock;
-    //private String tamannio;
     private String tipo;
     private String categoria;
     private float precio;
