@@ -9,9 +9,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 //idVenta AUTO_INCREMENT, idCliente AUTO_INCREMENT,  subtotal, iva, total, metodoPago
 //idEmpleado, fecha
@@ -22,12 +24,11 @@ public class Venta extends Transaccion {
     public Venta(){
         
     }
-    
-    public void generarVenta(int idEmpleado, String fecha) {
+    public void generarVenta(int idEmpleado, String fecha, int idCliente) {
     
     // Primero insertamos en VENTA
     String sqlVenta = "INSERT INTO VENTA (idEmpleado, fecha) "
-            + "VALUES (?, ?)";
+            + "VALUES (?, ?, ?)";
 
     try (Connection con = connection.getConnection()) {   
         // Iniciar transacción
@@ -38,6 +39,7 @@ public class Venta extends Transaccion {
             try (PreparedStatement pstmtVenta = con.prepareStatement(sqlVenta)) {
                 pstmtVenta.setInt(1, idEmpleado);
                 pstmtVenta.setString(2, fecha);
+                pstmtVenta.setInt(3, idCliente);
                 
                 pstmtVenta.executeUpdate();
                 System.out.println("Venta registrada");
@@ -57,14 +59,14 @@ public class Venta extends Transaccion {
         System.out.println("Error de conexión: " + e.getMessage());
     }
 }
-    public int getIdVenta(String fechaExacta) {
+    public int getIdVenta(int idCliente) {
     int idVenta = -1; // Valor por defecto que indica no encontrado
-    String sql = "SELECT idVenta FROM venta WHERE fecha = ?";
+    String sql = "SELECT idVenta FROM venta WHERE idCliente=?";
     
     try (Connection con = connection.getConnection();
          PreparedStatement pstmt = con.prepareStatement(sql)) {
         
-        pstmt.setString(1, fechaExacta);
+        pstmt.setInt(1, idCliente);
         
         try (ResultSet rs = pstmt.executeQuery()) {
             if (rs.next()) {

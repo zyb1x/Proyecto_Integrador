@@ -14,7 +14,11 @@ import javax.swing.JOptionPane;
 
 public class Cliente extends Persona {
     
-   public Cliente(String rfc, String nombre, String apellidoP, String apellidoM, String estado, String ciudad, String colonia,
+    private String apellidoP;
+    public Cliente() {
+    
+}
+   public void guardarCliente(String rfc, String nombre, String apellidoP, String apellidoM, String estado, String ciudad, String colonia,
                     String calle, int num_exterior, int codigo_postal, String correo) {
     String sql = "INSERT INTO CLIENTE (rfc, apellidoP, apellidoM, estado, ciudad, colonia, calle, num_exterior, codigo_postal, correo) "
         + "VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -62,5 +66,13 @@ public class Cliente extends Persona {
     }
     return IDCliente;
 }
+   
+   public void setApellidoP(String apellidoP){
+       this.apellidoP = apellidoP;
+   }
+   
+   public String getApellidoP(){
+       return apellidoP;
+   }
 
 }

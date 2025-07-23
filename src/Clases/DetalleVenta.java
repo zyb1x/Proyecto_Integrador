@@ -9,15 +9,27 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 //idDetalle AUTO_INCREMENT,cantidad, precioCompra,subtotal
 
 public class DetalleVenta extends Detalles {
     
+    private int id;
+    private String nombre;
+    private int cantidad;
+    private double precio;
+    
     public DetalleVenta(){
         
     }
     
+    public void arrayDetalle(int id, String nombre, int cantidad, double precio){
+        this.id = id;
+        this.nombre = nombre;
+        this.cantidad = cantidad;
+        this.precio = precio;
+    }
     public void generarDetalleVenta(int idVenta, int idProductos, 
         int cantidad, double precio, double subtotal, String metodoPago){
     // Luego insertamos en DETALLE_VENTA
@@ -154,4 +166,34 @@ public class DetalleVenta extends Detalles {
     }
     return subtotal;
     }
+    
+       public void getDetalleYMostrarEnTabla(int idVenta, DefaultTableModel modeloTabla) {
+    String sql = "SELECT * FROM detalle_venta WHERE idVenta = ?";
+
+    // Limpiar la tabla antes de llenarla
+    modeloTabla.setRowCount(0);
+
+    try (Connection con = connection.getConnection();
+         PreparedStatement pstmt = con.prepareStatement(sql)) {
+
+        pstmt.setInt(1, idVenta);
+
+        try (ResultSet rs = pstmt.executeQuery()) {
+            while (rs.next()) {
+                Object[] fila = new Object[6];  // Solo 6 columnas, excluimos idVenta porque ya lo tenemos
+                fila[0] = rs.getInt("idDetalle");
+                fila[1] = rs.getInt("idProductos");
+                fila[2] = rs.getInt("cantidad");
+                fila[3] = rs.getBigDecimal("precio");
+                fila[4] = rs.getBigDecimal("subtotal");
+                fila[5] = rs.getString("metodoPago");
+
+                modeloTabla.addRow(fila);
+            }
+        }
+
+    } catch (SQLException e) {
+        System.out.print("Error al cargar datos: " + e.getMessage());
+    }
+}
 }

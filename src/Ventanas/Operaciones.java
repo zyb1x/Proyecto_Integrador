@@ -22,13 +22,14 @@ import javax.swing.table.DefaultTableModel;
 
 public class Operaciones extends javax.swing.JInternalFrame {
     
+    public ArrayList<DetalleVenta> detalles = new ArrayList<>();
     
-    
-   public JTabbedPane getTabPanel() {
+    public JTabbedPane getTabPanel() {
     return TabPanel;
 }
+    public ArrayList<Cliente> cli = new ArrayList<>();
    
-   public void registroProductos(int idProductos, int idCategoria, String nombre, double precio, int stock, String tamannio){
+    public void registroProductos(int idProductos, int idCategoria, String nombre, double precio, int stock, String tamannio){
     String sql = "INSERT INTO PRODUCTOS (idProductos, idCategoria, nombre, precio, stock, tamannio)"
             + "VALUES(?, ?, ?, ?, ?, ?)";
     
@@ -49,7 +50,7 @@ public class Operaciones extends javax.swing.JInternalFrame {
     }
    }
    
-   public void InsertarProveedor(int idProveedor, String nombre, String telefono, String direccion){
+    public void InsertarProveedor(int idProveedor, String nombre, String telefono, String direccion){
        String sql = "INSERT INTO PROVEEDOR (idProveedor, nombre, telefono, direccion)"
                + "VALUES(?, ?, ?, ?)";
        
@@ -65,7 +66,7 @@ public class Operaciones extends javax.swing.JInternalFrame {
            System.out.println("Error al conectar con la base de datos");
        }
    }
- public int getIdEmpleado(String correo) {
+    public int getIdEmpleado(String correo) {
      int idEmpleado = 1;
      String sql = "SELECT idEmpleado FROM EMPLEADO WHERE correo = ?";
      
@@ -86,21 +87,8 @@ public class Operaciones extends javax.swing.JInternalFrame {
      return idEmpleado;
  }
  
- public Boolean validarIdCliente(String nombre, String apellidoP, String apellidoM){
-     String sql = "SELECT idCliente FROM cliente WHERE nombre=? AND apellidoP=? AND apellidoM";
-     
-     try(Connection con = connection.getConnection();
-             PreparedStatement pstmt = con.prepareStatement(sql)){
-         
-         pstmt.setString(1, nombre);
-         pstmt.setString(2, apellidoP);
-         pstmt.setString(3, apellidoM);
-         return true;
-     } catch (SQLException e) {
-         return false;
-     }
- }
-    
+ 
+ 
     public Operaciones() {
         initComponents();
         FacturacionPan.setEnabled(false);
@@ -108,7 +96,12 @@ public class Operaciones extends javax.swing.JInternalFrame {
         
         date.setText(String.valueOf(date1));
         
-        
+        DefaultTableModel modeloVentas = new DefaultTableModel();
+        modeloVentas.addColumn("ID");
+        modeloVentas.addColumn("Cantidad");
+        modeloVentas.addColumn("Precio unitario");
+        tablaVenta.setModel(modelo);  // 'tabla' es tu JTable
+
         
          //creo que este codigo pertenece a registrar productos 
        tipo.removeAllItems();
@@ -117,20 +110,18 @@ public class Operaciones extends javax.swing.JInternalFrame {
       tipo.addItem("Termoplasticos");
       
       //este lo movi, cualquier cosa en el bloc de notas
-             tipo.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
-                categoria.removeAllItems();
-                String sel = tipo.getSelectedItem().toString();
-                if (sel.equals("Termoestables")) {
-                    categoria.addItem("Limpieza");
-                    categoria.addItem("Hogar y cocina");
-                } else if (sel.equals("Termoplasticos")) {
-                    categoria.addItem("Descartables alimentos ");
-                    categoria.addItem("Bolsas y empaques");
-                  }
-               }
-             }
+             tipo.addItemListener((java.awt.event.ItemEvent evt) -> {
+                 if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+                     categoria.removeAllItems();
+                     String sel = tipo.getSelectedItem().toString();
+                     if (sel.equals("Termoestables")) {
+                         categoria.addItem("Limpieza");
+                         categoria.addItem("Hogar y cocina");
+                     } else if (sel.equals("Termoplasticos")) {
+                         categoria.addItem("Descartables alimentos ");
+                         categoria.addItem("Bolsas y empaques");
+                     }
+                 }
         });
              
              
@@ -146,10 +137,12 @@ public class Operaciones extends javax.swing.JInternalFrame {
     }
     
     //aqui inicia la logica de la ventana almacen   
-     DefaultTableModel modelo;
-     ArrayList<Producto> listaProductos = new ArrayList<>();  
+    DefaultTableModel modelo;
+    DefaultTableModel model = new DefaultTableModel();
+
+    ArrayList<Producto> listaProductos = new ArrayList<>();  
           
-       private void mostrarPorTipo(String filtro) {
+    private void mostrarPorTipo(String filtro) {
         modelo.setRowCount(0);
         for (Producto p : listaProductos) {
             if (filtro.equals("Mostrar todo") || p.getTipo().equalsIgnoreCase(filtro)) {
@@ -161,7 +154,7 @@ public class Operaciones extends javax.swing.JInternalFrame {
     }
           
      //filtrar busquedas  
-       private void buscarProducto (){         
+    private void buscarProducto (){         
            filtros.removeAllItems();
            filtros.addItem("ID");
            filtros.addItem("Nombre");
@@ -188,7 +181,7 @@ public class Operaciones extends javax.swing.JInternalFrame {
      }   //termina aqui, esto me corresponde
        
           //segun eso esto va en registrar productos
-       private void limpiarCampos() {
+    private void limpiarCampos() {
             idProducts.setText("");
             nombre.setText("");
             stock.setText("");
@@ -242,6 +235,8 @@ public class Operaciones extends javax.swing.JInternalFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tablaVenta = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        jLabel23 = new javax.swing.JLabel();
+        NombreProductoVenta = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         date = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -262,7 +257,7 @@ public class Operaciones extends javax.swing.JInternalFrame {
         jTextField4 = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaFactura = new javax.swing.JTable();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
@@ -371,6 +366,11 @@ public class Operaciones extends javax.swing.JInternalFrame {
         cancelar.setForeground(new java.awt.Color(10, 54, 86));
         cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/trash-x.png"))); // NOI18N
         cancelar.setText("Eliminar");
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(220, 225, 235));
@@ -465,6 +465,22 @@ public class Operaciones extends javax.swing.JInternalFrame {
         });
 
         tablaVenta.setBackground(new java.awt.Color(11, 54, 110));
+        tablaVenta.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "nombre", "Cantidad", "Precio unitario"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(tablaVenta);
 
         jButton1.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
@@ -472,6 +488,16 @@ public class Operaciones extends javax.swing.JInternalFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel23.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(220, 225, 235));
+        jLabel23.setText("Nombre Producto");
+
+        NombreProductoVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NombreProductoVentaActionPerformed(evt);
             }
         });
 
@@ -497,9 +523,15 @@ public class Operaciones extends javax.swing.JInternalFrame {
                         .addGap(60, 60, 60))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(idProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel23)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(NombreProductoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(idProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
@@ -549,10 +581,13 @@ public class Operaciones extends javax.swing.JInternalFrame {
                         .addComponent(jButton1))
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(metodoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23)
+                    .addComponent(NombreProductoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(metodoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(16, 16, 16)
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -724,8 +759,8 @@ public class Operaciones extends javax.swing.JInternalFrame {
         jLabel28.setText("LUGAR DE EXPEDICIÓN: 44100 ");
         jPanel7.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 50, -1, -1));
 
-        jTable1.setBackground(new java.awt.Color(11, 54, 110));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaFactura.setBackground(new java.awt.Color(11, 54, 110));
+        tablaFactura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -744,7 +779,7 @@ public class Operaciones extends javax.swing.JInternalFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaFactura);
 
         jPanel7.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(603, 134, 461, 172));
 
@@ -1357,12 +1392,13 @@ public class Operaciones extends javax.swing.JInternalFrame {
         String fecha = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 
         
-        Cliente newCliente = new Cliente(RFC, Nombre, ApellidoP, ApellidoM, Estado, Ciudad, Colonia, Calle, numExterior, codigo_postal, Correo);
+        Cliente newCliente = new Cliente(); 
+        newCliente.guardarCliente(RFC, Nombre, ApellidoP, ApellidoM, Estado, Ciudad, Colonia, Calle, numExterior, codigo_postal, Correo);
         
-        int idCliente = newCliente.getIdCliente(Correo);
+        int idCliente = newCliente.getIdCliente(ApellidoP);
         int idEmpleado = getIdEmpleado(login.email.getText());
         Venta newVenta = new Venta();
-        int idVenta = newVenta.getIdVenta(fecha);
+        int idVenta = newVenta.getIdVenta(idCliente);
         
         //Acceder a la clase
         DetalleVenta detalle = new DetalleVenta();
@@ -1370,6 +1406,20 @@ public class Operaciones extends javax.swing.JInternalFrame {
         int cantidad = detalle.getCantidad(idVenta);
         double precio = detalle.getPrecio(idVenta);
         double subtotal = detalle.getSubtotal(idVenta);
+        
+        DefaultTableModel model = new DefaultTableModel();
+
+// Agrega las columnas (solo una vez, antes de llenar la tabla)
+        model.addColumn("ID Detalle");
+        model.addColumn("ID Producto");
+        model.addColumn("Cantidad");
+        model.addColumn("Precio");
+        model.addColumn("Subtotal");
+        model.addColumn("Método de Pago");
+
+// Asocia el modelo con la tabla
+        tablaFactura.setModel(model);
+        detalle.getDetalleYMostrarEnTabla(idVenta, model);
         
         Factura factura = new Factura();
         factura.generarFactura(idEmpleado, idCliente, fecha, idVenta);
@@ -1483,10 +1533,14 @@ public class Operaciones extends javax.swing.JInternalFrame {
 
         String correo = login.email.getText();
         int idEmpleado = getIdEmpleado(correo);
+        Cliente cliente = new Cliente();
+        int idCliente = cliente.getIdCliente(paterno);
         
         Venta newVenta = new Venta();
-        newVenta.generarVenta(idEmpleado, fecha);
-        int idVenta = newVenta.getIdVenta(fecha);
+        newVenta.generarVenta(idEmpleado, fecha, idCliente);
+        
+        int idVenta = newVenta.getIdVenta(idCliente);
+        System.out.println("Id de venta a registrar en detalle de venta" + idVenta);
 
         DetalleVenta detalle = new DetalleVenta();
         detalle.generarDetalleVenta(idVenta,Producto, 
@@ -1553,26 +1607,49 @@ public class Operaciones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_apellidoMaternoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        int id = Integer.parseInt(idProducto.getText());
-        int Cantidad = Integer.parseInt(cantidad.getText());
-        float Precio = Float.parseFloat(precio.getText());
-        
-        DefaultTableModel model = new DefaultTableModel();
-        
-        model.addColumn("Id Productos");
-        model.addColumn("Nombre");
-        model.addColumn("Cantidad");
-        model.addColumn("Precio");
-        tablaVenta.setModel(model);
-        
+  modelo.setRowCount(0);
+  
+  int id = Integer.parseInt(idProducto.getText());
+  String name = nombre.getText();
+  int Cantidad = Integer.parseInt(cantidad.getText());
+  double Precio = Double.parseDouble(precio.getText());
+  double subtotal = Cantidad * Precio;
+  double iva = 0.16*subtotal;
+  double total = subtotal + iva;
+  
+  
+    modelo.addColumn("ID");
+    modelo.addColumn("Nombre");
+    modelo.addColumn("Cantidad");
+    modelo.addColumn("Precio unitario");
+    tablaVenta.setModel(modelo); 
+    
+    modelo.addRow(new Object[]{
+        id,name, Cantidad, Precio
+    });
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void NombreProductoVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreProductoVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NombreProductoVentaActionPerformed
+
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        // TODO add your handling code here:
+        int fila = tablaVenta.getSelectedRow();
+        if (fila >= 0) {
+            model.removeRow(fila);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(null, "Selecciona una tarea para borrar");
+        }
+    }//GEN-LAST:event_cancelarActionPerformed
 
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AlmacenPan;
     private javax.swing.JPanel FacturacionPan;
+    private javax.swing.JTextField NombreProductoVenta;
     private javax.swing.JPanel RegistrarProductos;
     public static javax.swing.JTabbedPane TabPanel;
     private javax.swing.JPanel VentasPan;
@@ -1623,6 +1700,7 @@ public class Operaciones extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
@@ -1676,7 +1754,6 @@ public class Operaciones extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
@@ -1693,6 +1770,7 @@ public class Operaciones extends javax.swing.JInternalFrame {
     private javax.swing.JTextField rfc;
     private javax.swing.JTextField stock;
     private javax.swing.JTextField subtotal;
+    private javax.swing.JTable tablaFactura;
     private javax.swing.JTable tablaVenta;
     private javax.swing.JTextField tamannio;
     private javax.swing.JTextField telefono;
