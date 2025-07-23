@@ -23,6 +23,9 @@ import javax.swing.table.DefaultTableModel;
 public class Operaciones extends javax.swing.JInternalFrame {
     
     public ArrayList<DetalleVenta> detalles = new ArrayList<>();
+    //DefaultTableModel modeloFactura = new DefaultTableModel();
+    
+
     
     public JTabbedPane getTabPanel() {
     return TabPanel;
@@ -86,22 +89,46 @@ public class Operaciones extends javax.swing.JInternalFrame {
      }
      return idEmpleado;
  }
- 
- 
+    
+    private void calcularTotal(){
+        DefaultTableModel modelo = (DefaultTableModel) tablaVenta.getModel();
+        double total = 0;
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+        int cantidad = (int) modelo.getValueAt(i, 2);
+        double precio = (double) modelo.getValueAt(i, 3);
+        total += cantidad * precio;
+    }
+    // Mostrar total (asumiendo que tienes un JLabel o JTextField para el total)
+    this.total.setText(String.format("%.2f", total));
+    }
+    private void agregarProductoATabla() {
+    
+}
  
     public Operaciones() {
         initComponents();
+        //Codigo perteneciente a almacen 
+      // Luego inicializa el modelo de la tabla
+      // En el constructor o método de inicialización
+DefaultTableModel modeloVenta = new DefaultTableModel();
+String[] columnasVenta = {"ID", "Nombre", "Cantidad", "Precio unitario"};
+modeloVenta.setColumnIdentifiers(columnasVenta);
+tablaVenta.setModel(modeloVenta);
+    modelo = new DefaultTableModel();
+    String[] columnas = {"ID", "Nombre", "Tipo", "Categoria", "Stock", "Precio"};
+    modelo.setColumnIdentifiers(columnas);
+    
+    // Verifica que `datos` no sea nulo antes de asignar el modelo
+    if (datos != null) {
+        datos.setModel(modelo);
+    } else {
+        System.err.println("¡Error: La tabla 'datos' es nula!");
+    }
+
         FacturacionPan.setEnabled(false);
        Date date1= new Date();
         
         date.setText(String.valueOf(date1));
-        
-        DefaultTableModel modeloVentas = new DefaultTableModel();
-        modeloVentas.addColumn("ID");
-        modeloVentas.addColumn("Cantidad");
-        modeloVentas.addColumn("Precio unitario");
-        tablaVenta.setModel(modelo);  // 'tabla' es tu JTable
-
         
          //creo que este codigo pertenece a registrar productos 
        tipo.removeAllItems();
@@ -127,18 +154,14 @@ public class Operaciones extends javax.swing.JInternalFrame {
              
   
       
-     //Codigo perteneciente a almacen 
-      modelo = new DefaultTableModel();
-      String[] columnas = {"ID", "Nombre", "Tipo", "Categoria", "Stock", "Precio"};
-       modelo.setColumnIdentifiers(columnas);  
-       datos.setModel(modelo);   //termina aqui la definicion de la tabla ubicada almacen
+     
  
                  
     }
     
     //aqui inicia la logica de la ventana almacen   
     DefaultTableModel modelo;
-    DefaultTableModel model = new DefaultTableModel();
+    
 
     ArrayList<Producto> listaProductos = new ArrayList<>();  
           
@@ -232,11 +255,11 @@ public class Operaciones extends javax.swing.JInternalFrame {
         jLabel22 = new javax.swing.JLabel();
         apellidoPaterno = new javax.swing.JTextField();
         apellidoMaterno = new javax.swing.JTextField();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tablaVenta = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jLabel23 = new javax.swing.JLabel();
         NombreProductoVenta = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaVenta = new javax.swing.JTable();
         jLabel10 = new javax.swing.JLabel();
         date = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -256,8 +279,6 @@ public class Operaciones extends javax.swing.JInternalFrame {
         jLabel26 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablaFactura = new javax.swing.JTable();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
@@ -289,6 +310,8 @@ public class Operaciones extends javax.swing.JInternalFrame {
         calle = new javax.swing.JTextField();
         jLabel55 = new javax.swing.JLabel();
         correo = new javax.swing.JTextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tablaFactura = new javax.swing.JTable();
         AlmacenPan = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
@@ -300,7 +323,7 @@ public class Operaciones extends javax.swing.JInternalFrame {
         establest = new javax.swing.JButton();
         plasticost = new javax.swing.JButton();
         bp = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
         datos = new javax.swing.JTable();
         RegistrarProductos = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
@@ -464,25 +487,6 @@ public class Operaciones extends javax.swing.JInternalFrame {
             }
         });
 
-        tablaVenta.setBackground(new java.awt.Color(11, 54, 110));
-        tablaVenta.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null}
-            },
-            new String [] {
-                "ID", "nombre", "Cantidad", "Precio unitario"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane3.setViewportView(tablaVenta);
-
         jButton1.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         jButton1.setText("Agregar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -501,14 +505,27 @@ public class Operaciones extends javax.swing.JInternalFrame {
             }
         });
 
+        tablaVenta.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tablaVenta);
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(nombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -519,10 +536,9 @@ public class Operaciones extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel22)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(apellidoMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(apellidoMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel23)
@@ -532,7 +548,7 @@ public class Operaciones extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(idProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
                         .addComponent(cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -541,8 +557,11 @@ public class Operaciones extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
@@ -595,13 +614,15 @@ public class Operaciones extends javax.swing.JInternalFrame {
                         .addComponent(jLabel9)
                         .addGap(18, 18, 18)
                         .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(generar)
-                        .addGap(26, 26, 26)
-                        .addComponent(cancelar)
-                        .addGap(27, 27, 27)
-                        .addComponent(generar1))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGap(26, 26, 26))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(cancelar)
+                .addGap(27, 27, 27)
+                .addComponent(generar1)
                 .addGap(15, 15, 15))
         );
 
@@ -645,7 +666,7 @@ public class Operaciones extends javax.swing.JInternalFrame {
                         .addComponent(jLabel10)
                         .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(6, 6, 6)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         VentasPan.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 1030, 530));
@@ -758,30 +779,6 @@ public class Operaciones extends javax.swing.JInternalFrame {
         jLabel28.setForeground(new java.awt.Color(220, 225, 235));
         jLabel28.setText("LUGAR DE EXPEDICIÓN: 44100 ");
         jPanel7.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 50, -1, -1));
-
-        tablaFactura.setBackground(new java.awt.Color(11, 54, 110));
-        tablaFactura.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Cantidad", "ID", "Descripción", "Precio unitario", "Importe"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tablaFactura);
-
-        jPanel7.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(603, 134, 461, 172));
 
         jLabel29.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(220, 225, 235));
@@ -973,6 +970,21 @@ public class Operaciones extends javax.swing.JInternalFrame {
         });
         jPanel7.add(correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 160, -1));
 
+        tablaFactura.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(tablaFactura);
+
+        jPanel7.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 80, -1, 210));
+
         javax.swing.GroupLayout FacturacionPanLayout = new javax.swing.GroupLayout(FacturacionPan);
         FacturacionPan.setLayout(FacturacionPanLayout);
         FacturacionPanLayout.setHorizontalGroup(
@@ -1100,21 +1112,21 @@ public class Operaciones extends javax.swing.JInternalFrame {
                 .addComponent(establest)
                 .addGap(42, 42, 42)
                 .addComponent(plasticost)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         datos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ID", "Nombre", "Tipo", "Categoría", "Stock", "Precio"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(datos);
+        jScrollPane1.setViewportView(datos);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -1122,17 +1134,17 @@ public class Operaciones extends javax.swing.JInternalFrame {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 48, Short.MAX_VALUE))
+                .addGap(150, 150, 150)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 195, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51))
         );
 
         javax.swing.GroupLayout AlmacenPanLayout = new javax.swing.GroupLayout(AlmacenPan);
@@ -1147,7 +1159,7 @@ public class Operaciones extends javax.swing.JInternalFrame {
             AlmacenPanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AlmacenPanLayout.createSequentialGroup()
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 144, Short.MAX_VALUE))
+                .addGap(0, 147, Short.MAX_VALUE))
         );
 
         TabPanel.addTab("Almacén", AlmacenPan);
@@ -1408,18 +1420,21 @@ public class Operaciones extends javax.swing.JInternalFrame {
         double subtotal = detalle.getSubtotal(idVenta);
         
         DefaultTableModel model = new DefaultTableModel();
-
-// Agrega las columnas (solo una vez, antes de llenar la tabla)
-        model.addColumn("ID Detalle");
+        
         model.addColumn("ID Producto");
         model.addColumn("Cantidad");
-        model.addColumn("Precio");
-        model.addColumn("Subtotal");
-        model.addColumn("Método de Pago");
-
-// Asocia el modelo con la tabla
+        model.addColumn("precio");
+        model.addColumn("subtotal");
+        
+        model.setRowCount(0);
+        model.addRow(new Object[]{
+        idProductos, cantidad, precio, subtotal
+        });
         tablaFactura.setModel(model);
-        detalle.getDetalleYMostrarEnTabla(idVenta, model);
+        
+        
+        
+    //detalle.getDetalleYMostrarEnTabla(idVenta, modeloFactura);
         
         Factura factura = new Factura();
         factura.generarFactura(idEmpleado, idCliente, fecha, idVenta);
@@ -1535,12 +1550,11 @@ public class Operaciones extends javax.swing.JInternalFrame {
         int idEmpleado = getIdEmpleado(correo);
         Cliente cliente = new Cliente();
         int idCliente = cliente.getIdCliente(paterno);
-        
         Venta newVenta = new Venta();
-        newVenta.generarVenta(idEmpleado, fecha, idCliente);
+        newVenta.generarVenta(idEmpleado, fecha);
         
-        int idVenta = newVenta.getIdVenta(idCliente);
-        System.out.println("Id de venta a registrar en detalle de venta" + idVenta);
+        int idVenta = newVenta.getIdVenta(idEmpleado);
+        //System.out.println("Id de venta a registrar en detalle de venta" + idVenta);
 
         DetalleVenta detalle = new DetalleVenta();
         detalle.generarDetalleVenta(idVenta,Producto, 
@@ -1607,8 +1621,31 @@ public class Operaciones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_apellidoMaternoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-  modelo.setRowCount(0);
-  
+    try {
+        int id = Integer.parseInt(idProducto.getText());
+        String name = nombre.getText();
+        int Cantidad = Integer.parseInt(cantidad.getText());
+        double Precio = Double.parseDouble(precio.getText());
+        double subtotal = Cantidad * Precio;
+        double iva = 0.16*subtotal;
+        double total = subtotal + iva;
+        DefaultTableModel modelo = (DefaultTableModel) tablaVenta.getModel();
+        
+        modelo.addRow(new Object[]{id, name, Cantidad, Precio});
+        
+        // Calcular y mostrar total
+        calcularTotal();
+        
+        idProducto.setText("");
+        nombre.setText("");
+        cantidad.setText("");
+        precio.setText("");
+        
+        
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Ingrese valores válidos", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+        /* 
   int id = Integer.parseInt(idProducto.getText());
   String name = nombre.getText();
   int Cantidad = Integer.parseInt(cantidad.getText());
@@ -1616,18 +1653,11 @@ public class Operaciones extends javax.swing.JInternalFrame {
   double subtotal = Cantidad * Precio;
   double iva = 0.16*subtotal;
   double total = subtotal + iva;
-  
-  
-    modelo.addColumn("ID");
-    modelo.addColumn("Nombre");
-    modelo.addColumn("Cantidad");
-    modelo.addColumn("Precio unitario");
-    tablaVenta.setModel(modelo); 
     
     modelo.addRow(new Object[]{
         id,name, Cantidad, Precio
     });
-
+*/
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void NombreProductoVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreProductoVentaActionPerformed
@@ -1638,7 +1668,7 @@ public class Operaciones extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         int fila = tablaVenta.getSelectedRow();
         if (fila >= 0) {
-            model.removeRow(fila);
+            modelo.removeRow(fila);
         } else {
             javax.swing.JOptionPane.showMessageDialog(null, "Selecciona una tarea para borrar");
         }
@@ -1753,7 +1783,7 @@ public class Operaciones extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;

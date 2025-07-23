@@ -24,11 +24,11 @@ public class Venta extends Transaccion {
     public Venta(){
         
     }
-    public void generarVenta(int idEmpleado, String fecha, int idCliente) {
+    public void generarVenta(int idEmpleado, String fecha) {
     
     // Primero insertamos en VENTA
     String sqlVenta = "INSERT INTO VENTA (idEmpleado, fecha) "
-            + "VALUES (?, ?, ?)";
+            + "VALUES (?, ?)";
 
     try (Connection con = connection.getConnection()) {   
         // Iniciar transacción
@@ -39,7 +39,6 @@ public class Venta extends Transaccion {
             try (PreparedStatement pstmtVenta = con.prepareStatement(sqlVenta)) {
                 pstmtVenta.setInt(1, idEmpleado);
                 pstmtVenta.setString(2, fecha);
-                pstmtVenta.setInt(3, idCliente);
                 
                 pstmtVenta.executeUpdate();
                 System.out.println("Venta registrada");
@@ -59,8 +58,29 @@ public class Venta extends Transaccion {
         System.out.println("Error de conexión: " + e.getMessage());
     }
 }
-    public int getIdVenta(int idCliente) {
-    int idVenta = -1; // Valor por defecto que indica no encontrado
+    public int getIdVenta(int idEmpleado) {
+    int idVenta = 1; // Valor por defecto que indica no encontrado
+    String sql = "SELECT idVenta FROM venta WHERE idEmpleado=?";
+    
+    try (Connection con = connection.getConnection();
+         PreparedStatement pstmt = con.prepareStatement(sql)) {
+        
+        pstmt.setInt(1, idEmpleado);
+        
+        try (ResultSet rs = pstmt.executeQuery()) {
+            if (rs.next()) {
+                idVenta = rs.getInt("idVenta");
+            }
+        }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error al obtener idVenta");
+        System.err.println("Error SQL: " + e);
+    }
+    return idVenta;
+}
+    
+   /* public int getIdVenta(int idCliente) {
+    int idVenta = 1; // Valor por defecto que indica no encontrado
     String sql = "SELECT idVenta FROM venta WHERE idCliente=?";
     
     try (Connection con = connection.getConnection();
@@ -78,5 +98,5 @@ public class Venta extends Transaccion {
         System.err.println("Error SQL: " + e);
     }
     return idVenta;
-}
+}*/
 }

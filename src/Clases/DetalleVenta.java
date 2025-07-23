@@ -1,4 +1,3 @@
-
 package Clases;
 
 //Datos de detalle de compra en la base
